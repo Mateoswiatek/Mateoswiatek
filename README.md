@@ -14,9 +14,9 @@ I am a first-year student at AGH in Krakow, Poland, majoring in Computer Science
 - Economy
 - Soft skills
 
-🤔 I’m looking for help with free-time
-
-- Lekkoatletyka
-- Muzyka
-- Fotografia
-- Psychologia społeczna
+My hobbies:
+- Athletics
+- Music
+- Photography
+- Martial Arts
+- Social Psychology
