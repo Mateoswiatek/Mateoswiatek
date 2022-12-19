@@ -14,17 +14,27 @@ Fork z [tego](https://paperswithcode.com/paper/nerf-art-text-driven-neural-radia
 🔭 I’m currently working on:
 -  FriendBy
 -  DigitalTwin
+-  Własne środowisko graficzne (przekstałcenia obrazów na macierzach)
 
 🌱 I’m currently learning
 - AI
 - Math
-- C, Python
+- C
+- Python
 - Economy
 - Soft skills
 
+Ostatnio nauczne:
+- C:
+   -  podstawy
+   -  listy
+   -  proste drzewa
+   -  pliki
+- podstawy PCA
+
 My hobbies:
 - Athletics
-- Music
+- Music (piano, guitar)
 - Photography
 - Martial Arts
 - Social Psychology
