@@ -19,7 +19,7 @@ Fork z [tego](https://paperswithcode.com/paper/nerf-art-text-driven-neural-radia
 🌱 I’m currently learning
 - AI
 - Math
-- C
+- C - Socket
 - Python
 - Economy
 - Soft skills
