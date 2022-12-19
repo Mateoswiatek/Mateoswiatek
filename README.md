@@ -1,6 +1,12 @@
 ```python
 print("Hi there")
 ```
+```c
+  int ascii = 51; // Masz teraz jakis kod ascii
+  char znak = (char)ascii; // Konwertuje go na typ znakowy
+  printf("%c", znak);
+```
+    
 ## My [CV](https://mateoswiatek.github.io) <br />
 I am a first-year student at **AGH** in Krakow, Poland, majoring in Computer Science and Intelligent Systems (***ISI***) 
 
