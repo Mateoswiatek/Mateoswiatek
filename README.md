@@ -5,6 +5,8 @@ I am a first-year student at **AGH** in Krakow, Poland, majoring in Computer Sci
 -  DigitalTwin - electrics, pcb, C
 -  [Lunaris](https://www.orbital-space.com/experimentonthemoon)
 -  Simulating conditioned anxiety - Python, AI
+-  ListyCykliczne
+-  Przenieść z AiSD z Gitlaba projekty
 
 Realised projects:
 - [Safe Drive](https://www.youtube.com/watch?v=f3RRo53PAh8)
