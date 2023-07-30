@@ -5,11 +5,10 @@ I am a first-year student at **AGH** in Krakow, Poland, majoring in Computer Sci
 -  DigitalTwin - electrics, pcb, C
 -  [Lunaris](https://www.orbital-space.com/experimentonthemoon)
 -  Simulating conditioned anxiety - Python, AI
--  ListyCykliczne
--  Przenieść z AiSD z Gitlaba projekty
 
-Realised projects:
+Realised "Interesting" projects:
 - [Safe Drive](https://www.youtube.com/watch?v=f3RRo53PAh8)
+- [Spotify playlist to mp3 converter](https://github.com/Mateoswiatek/Spotify_playlist_to_mp3_file)
 
 🌱 I’m currently learning
 - Math
