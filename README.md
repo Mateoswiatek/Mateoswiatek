@@ -1,3 +1,6 @@
+Last more interesting update:
+[Spotify playlist to mp3 converter](https://github.com/Mateoswiatek/Spotify_playlist_to_mp3_file)
+
 I am a first-year student at **AGH** in Krakow, Poland, majoring in Computer Science and Intelligent Systems (***ISI***) 
 
 🔭 I’m currently working on:
@@ -29,6 +32,8 @@ Realised "Interesting" projects:
   <a href="https://gitlab.com/Mateoswiatek">
     <img src="https://www.vectorlogo.zone/logos/gitlab/gitlab-icon.svg" alt="Mateusz Świątek GitLab Profile" height="30" width="30">
   </a>
+
+[LetCode](https://leetcode.com/mswiatek2002/)
 
 <h2 align="center">Github stats :bar_chart:</h2>
 
