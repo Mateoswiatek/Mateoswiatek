@@ -4,10 +4,11 @@ Last more interesting update:
 I am a first-year student at **AGH** in Krakow, Poland, majoring in Computer Science and Intelligent Systems (***ISI***) 
 
 🔭 I’m currently working on:
--  File to video converter - python
--  DigitalTwin - electrics, pcb, C
--  [Lunaris](https://www.orbital-space.com/experimentonthemoon)
 -  Simulating conditioned anxiety - ROS2, Gazebo, Python, AI
+-  [Lunaris](https://www.orbital-space.com/experimentonthemoon)
+-  DigitalTwin - electrics, pcb, C
+-  File to video converter - python
+
 
 Realised "Interesting" projects:
 - [Safe Drive](https://www.youtube.com/watch?v=f3RRo53PAh8)
