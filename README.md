@@ -14,6 +14,8 @@ Realised "Interesting" projects:
 - [Spotify playlist to mp3 converter](https://github.com/Mateoswiatek/Spotify_playlist_to_mp3_file)
 
 🌱 I’m currently learning
+- ROS2
+- Gazebo
 - Math
 - Cpp
 - Python
