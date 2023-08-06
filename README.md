@@ -7,7 +7,7 @@ I am a first-year student at **AGH** in Krakow, Poland, majoring in Computer Sci
 -  File to video converter - python
 -  DigitalTwin - electrics, pcb, C
 -  [Lunaris](https://www.orbital-space.com/experimentonthemoon)
--  Simulating conditioned anxiety - Python, AI
+-  Simulating conditioned anxiety - ROS2, Gazebo, Python, AI
 
 Realised "Interesting" projects:
 - [Safe Drive](https://www.youtube.com/watch?v=f3RRo53PAh8)
