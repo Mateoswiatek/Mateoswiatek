@@ -1,5 +1,8 @@
+# [My CV](https://github.com/Mateoswiatek/Mateoswiatek/files/12693896/mswiatek_cv.pdf)
+
 Last more interesting update:
 [Spotify playlist to mp3 converter](https://github.com/Mateoswiatek/Spotify_playlist_to_mp3_file)
+
 
 I am a first-year student at **AGH** in Krakow, Poland, majoring in Computer Science and Intelligent Systems (***ISI***) 
 
