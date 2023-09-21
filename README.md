@@ -1,27 +1,25 @@
 # [My CV](https://github.com/Mateoswiatek/Mateoswiatek/files/12693896/mswiatek_cv.pdf)
 
+I am a first-year student at **AGH** in Krakow, Poland, majoring in Computer Science and Intelligent Systems (***ISI***)
+I'm open to new challenges and continuously strive to improve my skills. I'm eager to try new things, and I view every challenge as an opportunity for growth. As a technology enthusiast, I aim to expand my knowledge and apply it in practice to create innovative solutions and push the boundaries in the fields of computer science, robotics, and artificial intelligence. So, if I see an opportunity to do something interesting, I go for it. Perhaps the next thing I do, I'll do it with you?
+
 Last more interesting update:
 [Spotify playlist to mp3 converter](https://github.com/Mateoswiatek/Spotify_playlist_to_mp3_file)
 
+🔭 I’m currently working on [Lunaris](https://www.orbital-space.com/experimentonthemoon) and **Simulating conditioned anxiety**(ROS2, Gazebo, Python, AI)
 
-I am a first-year student at **AGH** in Krakow, Poland, majoring in Computer Science and Intelligent Systems (***ISI***) 
+🌱 I’m currently learning **Gazebo, SQL, C++, Python**
 
-🔭 I’m currently working on:
--  Simulating conditioned anxiety - ROS2, Gazebo, Python, AI
--  [Lunaris](https://www.orbital-space.com/experimentonthemoon)
--  DigitalTwin - electrics, pcb, C
--  File to video converter - python
+Projects on hold:
+- DigitalTwin - electrics, pcb, C
+- File to video converter - python
 
 
-Realised "Interesting" projects:
+
+Realised "Interesting" projects: 
 - [Safe Drive](https://www.youtube.com/watch?v=f3RRo53PAh8)
 - [Spotify playlist to mp3 converter](https://github.com/Mateoswiatek/Spotify_playlist_to_mp3_file)
 
-🌱 I’m currently learning
-- Gazebo
-- SQL
-- Cpp
-- Python
 
 Skills:
 - Cpp
