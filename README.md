@@ -1,6 +1,6 @@
 # [My CV](https://github.com/Mateoswiatek/Mateoswiatek/files/12693896/mswiatek_cv.pdf)
 
-I am a first-year student at **AGH** in Krakow, Poland, majoring in Computer Science and Intelligent Systems (***ISI***)
+I am a second-year student at **AGH** in Krakow, Poland, majoring in Computer Science and Intelligent Systems (***ISI***)
 I'm open to new challenges and continuously strive to improve my skills. I'm eager to try new things, and I view every challenge as an opportunity for growth. As a technology enthusiast, I aim to expand my knowledge and apply it in practice to create innovative solutions and push the boundaries in the fields of computer science, robotics, and artificial intelligence. So, if I see an opportunity to do something interesting, I go for it. Perhaps the next thing I do, I'll do it with you?
 
 Last more interesting update:
