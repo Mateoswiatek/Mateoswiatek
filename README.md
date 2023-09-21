@@ -32,6 +32,7 @@ Skills:
 - STM32
 - C
 - PLC Programming
+- Mechatronics, electronics, electrical, soldering, PCB design
   
 
 <h2 align="center">You can reach me at :alien:</h2>
