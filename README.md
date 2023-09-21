@@ -15,11 +15,21 @@ Realised "Interesting" projects:
 - [Spotify playlist to mp3 converter](https://github.com/Mateoswiatek/Spotify_playlist_to_mp3_file)
 
 🌱 I’m currently learning
-- ROS2
 - Gazebo
-- Math
+- SQL
 - Cpp
 - Python
+
+Skills:
+- Cpp
+- ROS2
+- Python
+- Linux
+- Git
+- STM32
+- C
+- PLC Programming
+  
 
 <h2 align="center">You can reach me at :alien:</h2>
 
