@@ -44,7 +44,7 @@ Projects on hold:
      <td align="center" width=110>PLC Programming</td>
      <td align="center" width=110>Mechatronics</td>
      <td align="center" width=110>Electronics</td>
-     <td align="center" width=110>Soldering</td>
+     <td align="center" width=110>Git(hub/lab)</td>
      <td align="center" width=110>PCB design</td>
     </tr>
   </table>
