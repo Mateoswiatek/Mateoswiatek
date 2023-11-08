@@ -6,11 +6,12 @@ I'm open to new challenges and continuously strive to improve my skills. I'm eag
 Last more interesting update:
 - [Turtle_killer](https://github.com/Mateoswiatek/ROS2_follow_turtle_robot) - The most **complex completed** project in *ROS2*.
 - [collection of projects](https://github.com/Mateoswiatek/ROS2_other_small_projects) - "Several other ROS2 projects
+- [Simple CV HTML generator in Java](https://github.com/Mateoswiatek/CreatorCVJava)
 - [Spotify playlist to mp3 converter](https://github.com/Mateoswiatek/Spotify_playlist_to_mp3_file)
 
 🔭 I’m currently working on [Lunaris](https://www.orbital-space.com/experimentonthemoon) and **Simulating conditioned anxiety**(ROS2, Gazebo, Python, AI)
 <br>
-🌱 I’m currently learning **Gazebo, SQL, C++, Python**
+🌱 I’m currently learning **Java, SQL, C, Python**
 <br>
 
 Realised "Interesting" projects: 
