@@ -34,11 +34,11 @@ Projects on hold:
     </thead>
     <tr>
      <td align="center" width=110>Python</td>
+     <td align="center" width=110>Java</td>
      <td align="center" width=110>C++</td>
      <td align="center" width=110>C</td>
      <td align="center" width=110>ROS2</td>
      <td align="center" width=110>Linux</td>
-     <td align="center" width=110>Bash</td>
     </tr>
     <tr>
      <td align="center" width=110>STM32</td>
