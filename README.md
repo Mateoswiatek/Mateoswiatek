@@ -9,7 +9,7 @@ Last more interesting update:
 - [collection of projects](https://github.com/Mateoswiatek/ROS2_other_small_projects) - "Several other ROS2 projects
 - [Spotify playlist to mp3 converter](https://github.com/Mateoswiatek/Spotify_playlist_to_mp3_file)
 
-🔭 I’m currently working on [Lunaris](https://www.orbital-space.com/experimentonthemoon) and **Simulating conditioned anxiety**(ROS2, Gazebo, Python, AI)
+🔭 I’m currently working on [Lunaris](https://www.orbital-space.com/lunarmission) and **Simulating conditioned anxiety**(ROS2, Gazebo, Python, AI)
 <br>
 🌱 I’m currently learning **Java, SQL, C, Python**
 <br>
