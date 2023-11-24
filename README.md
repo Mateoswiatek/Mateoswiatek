@@ -1,29 +1,23 @@
 # [My CV](https://github.com/Mateoswiatek/Mateoswiatek/files/12693896/mswiatek_cv.pdf)
 
 I am a second-year student at **AGH** in Krakow, Poland, majoring in Computer Science and Intelligent Systems (**ISI**)
-I'm open to new challenges and continuously strive to improve my skills. I'm eager to try new things, and I view every challenge as an opportunity for growth. As a technology enthusiast, I aim to expand my knowledge and apply it in practice to create innovative solutions and push the boundaries in the fields of computer science, robotics, and artificial intelligence. So, if I see an opportunity to do something interesting, I go for it. Perhaps the next thing I do, I'll do it with you?
+I'm open to new challenges and continuously strive to improve my skills. I'm eager to try new things, and I view every challenge as an opportunity for growth.
+<br><br>
+🌱 I’m currently learning **Java, SQL, Python, C**
+<br>
+🔭 I’m currently working on:
+- [Gym Website as a Course Assignment Project](https://github.com/MaksymSz/silownia) - I am responsible for the Java backend
+- [Lunaris](https://www.orbital-space.com/lunarmission) - Embedded programming, development
+<br>
 
 Last more interesting update:
+- [CSV Reader](https://github.com/Mateoswiatek/CSV_Reader) - CSV Reader in development.
+
+Realised "Interesting" projects:
 - [Simple CV HTML generator in Java](https://github.com/Mateoswiatek/CreatorCVJava)
-- [Turtle_killer](https://github.com/Mateoswiatek/ROS2_follow_turtle_robot) - The most **complex completed** project in *ROS2*.
-- [collection of projects](https://github.com/Mateoswiatek/ROS2_other_small_projects) - "Several other ROS2 projects
-- [Spotify playlist to mp3 converter](https://github.com/Mateoswiatek/Spotify_playlist_to_mp3_file)
-
-🔭 I’m currently working on [Lunaris](https://www.orbital-space.com/lunarmission) and **Simulating conditioned anxiety**(ROS2, Gazebo, Python, AI)
-<br>
-🌱 I’m currently learning **Java, SQL, C, Python**
-<br>
-
-Realised "Interesting" projects: 
-- [Turtle_killer](https://github.com/Mateoswiatek/ROS2_follow_turtle_robot) - ROS2 
+- [Turtle_killer](https://github.com/Mateoswiatek/ROS2_follow_turtle_robot) - The most *complex completed* project in *ROS2*.
 - [Safe Drive](https://www.youtube.com/watch?v=f3RRo53PAh8) - Designed and programmed device, Winning the Olympics in Poland.
 - [Spotify playlist to mp3 converter](https://github.com/Mateoswiatek/Spotify_playlist_to_mp3_file) - Python, APIs
-
-
-Projects on hold:
-- DigitalTwin - electrics, pcb, C
-- File to video converter - python
-<br>
 
 <div align="center">
   <table>
