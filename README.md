@@ -53,7 +53,7 @@ Projects on hold:
 <h2 align="center">You can reach me at :alien:</h2>
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/matiesswiatke/">
+  <a href="https://www.linkedin.com/in/mateoswiatek/">
     <img src="https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg" alt="Mateusz Świątek LinkedIn Profile" height="30" width="30">
   </a>
 
