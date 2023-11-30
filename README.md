@@ -10,7 +10,8 @@ I'm open to new challenges and continuously strive to improve my skills. I'm eag
 <br>
 
 Last more interesting update:
-- [CSV Reader](https://github.com/Mateoswiatek/CSV_Reader) - CSV Reader in development.
+- [SQL_Querries](https://github.com/Mateoswiatek/SQL_Querries) - My SQL querries from Colloquia / labs
+- [CSV Reader](https://github.com/Mateoswiatek/CSV_Reader)  - CSV Reader in development.
 
 Realised "Interesting" projects:
 - [Simple CV HTML generator in Java](https://github.com/Mateoswiatek/CreatorCVJava)
@@ -36,8 +37,8 @@ Realised "Interesting" projects:
     <tr>
      <td align="center" width=110>Python</td>
      <td align="center" width=110>Java</td>
-     <td align="center" width=110>C++</td>
-     <td align="center" width=110>C</td>
+     <td align="center" width=110>SQL</td>
+     <td align="center" width=110>C++ / C</td>
      <td align="center" width=110>ROS2</td>
      <td align="center" width=110>Linux</td>
     </tr>
