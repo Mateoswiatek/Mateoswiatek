@@ -6,20 +6,21 @@ I'm open to new challenges and continuously strive to improve my skills. I'm eag
 🌱 I’m currently learning **Java, SQL, Python, C**
 <br>
 🔭 I’m currently working on:
-- [AdminUnit tool with CSV Reader](https://github.com/Mateoswiatek/AdminUnit_tool_with_CSV_Reader-) 
-- [Gym Website as a Course Assignment Project](https://github.com/MaksymSz/silownia) - I am responsible for the Java backend
+- [OpenPortScanner](https://github.com/Mateoswiatek/JavaOpenPortScannerWithThreads) - I used ExecutorService and BlockingQueue to manage the task.
 - [Lunaris](https://www.orbital-space.com/lunarmission) - Embedded programming, development
 <br>
 
 Last more interesting update:
-- [SQL_Querries](https://github.com/Mateoswiatek/SQL_Querries) - My SQL querries from Colloquia / labs
-- [AdminUnit tool with CSV Reader](https://github.com/Mateoswiatek/AdminUnit_tool_with_CSV_Reader-)  - extensive AdminUnit management and editing tool with my own CSVReader.
+- [ParallelMean](https://github.com/Mateoswiatek/JavaParallelMeanLab12) - Different approaches to managing multithreading.
+- [AdminUnit tool with CSV Reader](https://github.com/Mateoswiatek/AdminUnit_tool_with_CSV_Reader-)
+- [Dining Philosophers](https://github.com/Mateoswiatek/JavaDiningPhilosophers) - Simple solution to the Dining Philosophers problem
 
 Realised "Interesting" projects:
+- [SQL_Querries](https://github.com/Mateoswiatek/SQL_Querries) - My SQL querries from Colloquia / labs
 - [Simple CV HTML generator in Java](https://github.com/Mateoswiatek/CreatorCVJava)
 - [Safe Drive](https://www.youtube.com/watch?v=f3RRo53PAh8) - Designed and programmed device, Winning the Olympics in Poland.
-- [Spotify playlist to mp3 converter](https://github.com/Mateoswiatek/Spotify_playlist_to_mp3_file) - Python, APIs
 - [Turtle_killer](https://github.com/Mateoswiatek/ROS2_follow_turtle_robot) - The most *complex completed* project in *ROS2*.
+- [Gym Website as a Course Assignment Project](https://github.com/MaksymSz/silownia) - I am responsible for the Java backend
 
 
 <h2 align="left">You can reach me at: </h2>
