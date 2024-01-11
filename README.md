@@ -38,9 +38,9 @@ Realised "Interesting" projects:
       </tr>
     </thead>
     <tr>
-     <td align="center" width=110>Python</td>
      <td align="center" width=110>Java</td>
      <td align="center" width=110>SQL</td>
+     <td align="center" width=110>Python</td>
      <td align="center" width=110>C++ / C</td>
      <td align="center" width=110>ROS2</td>
      <td align="center" width=110>Linux</td>
