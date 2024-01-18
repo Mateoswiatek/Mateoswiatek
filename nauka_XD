@@ -1,1 +1,203 @@
+alter table nazwa_tabeli drop check(premia<pensja);
+
+alter table nazwa_tabeli drop constraint max_premia;
+
+alter table nazwa_tabeli alter column cena drop check(cena>40.00);
+
+alter table nazwa_tabeli alter column cena drop constraint cena_minimalna;
+
+mozna i tak i tak zorbic, susuwajc mozna zrobic cascade, w tedy rekoreycjnjie się to zrobi
+
+alter table nazwa_tabeli drop column nazwa_kolumny [cascade];
+
+Data i czas 
+date
+time
+now, tommorow, yesterday, today - czas to polnoc jest. 
+timestamp
+interval
+
+mozna konwertowac ze stringa na daty
+'string'::date
+'jakisnapis'::timestamp
+
+current_time
+current_date
+current_timestamp
+localtime
+localtimestamp
+
+standardowo jest ISO ale jest tez SQL, i posgresa i grego
+set datestyle to 'SQL, DMY';
+1NF jest w tedy, kiedy wszystkie wartosci w kolumnach, ogolnie wsyzstkie wartosci to sa wartosci atomiczne, nie da sie ich podzielic (logicznie), np data to bezie watos atomiczna, pomimo ze niby ma dzien rok miesiac itp itd.
+alter table nazwa_tabeli alter column nazwa_kolumny set default 2;
+alter table nazwa_tabeli alter column nazwa_kolumny drop default;
+
+typy zlozone - to takie sturktury, klasy kote maja w sobie wiecej typow danych
+np 
+
+create type complex as 	(
+re real,
+im real
+);
+mozemy uzywac jak każdego innego typu danych, czyli np w kolumnach:
+
+create table liczby(
+nazwa varchar(10),
+wartosc complex),
+primary key(nazwa)
+);
+
+insert into liczby values('i', (0, 1));
+
+select * from liczby where (wartosc).im = 0;
+
+select nazwa, (wartosc).re from liczxby;
+
+ograniczeniem jest to, ze w zlozonych typach nie mozna dawac ograniczen jeslli chodzi o pola / atrybuty.
+
+dalej, 
+do pol musimy sie odwolwac za pomoca nawiasow, bo ianczj sql mysli ze chozi nam o tablice liczby oraz o kolumne re / im. a  dzieki nawiaosm wskazujemy, ze chozi nam o typ zlozony.
+
+alter table nazwa_tabeli alter column cena
+	type numeric(10, 2);
+	
+ta operacja sie poweizie,e tylkow tedy, kiedy dla kazdej wartosci bezdie mozliwe przekonwertowanie do nwego typu. mozna użyc using() aby wskazac sposb konwersji..
+alter table nazwa_tabeli add column
+	nazwa_kolumny typ ograniczenia - jak przy noramnym tworzeniu
+alter table nazwa_tabeli add column
+	cena numeric(7,2) constraint unikatowe_nazwy uniqe not null check(cena>=40);
+	
+alter table nazwa_tabeli drop column nazwa_kolumny cascade - cascade usuwa kaskadowo.
+
+alter table nazwa_tabeli rename column stara_nazwa to nowa_nazwa;
+
+alter table nazwa_tabeli rename to nowa_nazwa_tabeli;
+
+alter table nazwa_tabeli add constraint nazwa_ogranizcenia
+	ograniczenie
+	
+alter table nazwa_tabeli
+	add foregin key(idczekoladki, idpudelka) references to zawartsoc on delete set null on update cascaade
+	 jeszcze jest no action i refuse???
+	 
+alter table nazwa_tabeli add check(permia<pensja);
+	 
+alter table nazwa_tabeli alter column nazwa_kolumny set not null;
+alter table nazwa_tabeli alter column nazwa_kolumny drop not null;
+
+alter table nazwa_tabeli alter column nazwa_kolumny set default 2;
+alter table nazwa_tabeli alter column nazwa_kolumny drop default;
+
+alter table nazwa_tabeli alter column cena 
+type numeric(10,2);
+
+drop table tabela_1;
+drop table if exist tabela1 refuse; restrict
+drop table if exist tabela1 cascade; - kaskoadowwo, wszytkie powiazane wywali
+select position('a' in 'ala');
+zgodnosc referencyjna, przy kluczach obcyhc,
+oresla co ma sie dziac kiedy zmieni sie kluzc glowny do ktorego sie odnosimy.
+
+create table nazwa_tabeli(
+idczekoladki not null references czekoladki on update cascade on delete set null
+
+set null
+set default
+cascade
+no action
+restrict
+
+alter table nazwa_tabeli add constrains nazwa_ograniczenia
+	check(pensja>premia);
+	
+alter table nazwa_tabeli
+	add foregin key(idczekoladki, idpudelka) references zawartosc on update cascade;
+	
+alter table nazwa_tabeli alter column cena add constarint c chceck(cena>40.00);
+alter table nazwa_tabeli drop check(pensja>premia);
+alter table nazwa_tabeli drop constraint nazwa_ograniczenia;
+alter table nazwa_tabeli alter column nazwa_kolumny drop not null;
+alter table nazwa_tabeli alter column cena drop constraint cena_minimalna;
+alter table nazwa_tabeli alter column nazwa_kolumny set default 2;
+alter table nazwa_tabeli alter column nazwa_kolumny drop default;
+
+to jetst dekompozycja, jest zle rozpbiice, ktore nie zachowuje dancych - dekopmozoycja stratna, bo przy lzaczeniu natrualnym nie otrzymamy tablicy relacji poczatkowej.
+nadklucz to taki zestaw atrybutow ktorego domkniecie tranzytywne da nam wszystkie wartosci z relacji,
+klucz to miniamlny nadklucz, najmnczijszy z nadkluczy.
+
+nadklucz - zbior atrybutow z ktorych wynika caly rekord, moze byc dowolnie dlugi, w ostatecznoscimoze byc calym rekordem.
+drop table if exist nazwa_tabeli 
+cascade,
+restrict
+
+usunecie tabeli powoduje usuniecie wyzstkich rzeczy ktore byly z tym powiazane, czyli liznikow sekwensji wyzwalaczy itp itd ? indeksy, reguly, ograniczen, jesli wartosci z tej tabli sa gdzies indziej uzywane, to powinno sie zrobic cascade, aby syfu nie bylo. 
+zbior minimalny 
+ma tylko zalezosci proste - po prawej stornie sa pojedyncze wartosci
+nie ma zbednych zaenzosci - takich kotre wynikaja z innych 
+nie ma nadmiarowosci w zaleznosichac - jesli jedna lewa storna jest pdzborem innej, i produkuja to samo, to wybieramy ta kotra jest miniesjza, ma mniej elementow, bo ona kejst wysatczajaca.
+jesli jest jeden do jednego,
+jesli po obou stornach jest obowiazkowe 11 11 no to laczymy w jedna tabele.
+jesli jest 11 1n, to tam gdzie jest 1n to tam dajemy klucz glowny z tego przy 11. tam gdzie jest 11 to jest nadrzedne, a tam gdzie jest 1n to jest podrzedne.
+
+rekrencyjne - jesli jet obowiazkowe po ou stronach, ze kazdy to ma, no to dostawiamy nowa kolumne, zmieniajac nazwe i tyle
+alter table nazwa_tabeli add column 
+	idszefa integer not null references pracownicy;
+	
+jesli jest po jenej stornie obowiazkwe, no to roibmy dodatkowaw tablilce gdzie sa dwa klcuze obce,
+create table szefowie(
+idszefa integer references pracownicy on delete set default on update set default,
+idpracownika integer references pracownicy set on delete cascade,
+);
+i tera po prsotu tu wrzucamy,
+podobnie jesli po obu stronach jest opcjonalnie, w tedy tak samo robimy.
+zgodnosc referencyna - co się dzieje z kluczem obcym jeśli klucz główny do kotó©ego się odonsi sie zmieni lub zostanie usunięty?
+
+create table nazwa_tabeli(
+idczekoladki varcahr(5) references czekoladki on delay cascade on update cascade 
+...
+);
+
+co ma sie dzic gdy klucz glowny zostanie usuniety - on delay
+gdy zostanie zmienony - on update
+mozemy robic
+
+cascade
+no action
+restrict - zabezpoeiczenie ze nie mozna ruszyc tego klucz glownego jesli istnieje on w tej tabeli jako klucz obcy.
+set default
+set null
+zaleznosc trywiala, to takak gdzie prawa storna jest podzbiorem lewej storny
+AD -> A, AD -> D
+imie, nazwisko -> nazwsko
+BCNF - po lewej zawsze jest klucz / nadklucz
+3NF - po lewej jest klucz lub po prawej są tylko kluczowe
+2NF - nie ma sytuacji ze niekluczowy zalezy od czesci klucza
+1NF - wsyzstkie wartsoci są atoiczne
+zawszet rzeba policzyć najpierw wszsytkie klucze.
+
+zalenzosc funckjnyaa
+dopelnienie tranzytywne klucza H relaci R daje nam cala relacje R
+z klucza funkcyjnie wynika cala relacja. znajac klucz otrzymujemy wszystkie dane z tej realacji.
+
+trzeba zmienic nazwe i tyle
+alter table nazwa_tabeli 
+	set foreign key(nazwa_klucza_obcego) references tabela1;
+zaleznosc funckyjna to wnisowkoanie jednych danych na postawie innych. nie zalezy od konrektnych wartsoci tych danych jakie sa w tabelach / kolumnach.
+wynikaja ze schematu relacji a nie realacji jako takiej samej.
+aby sie zwiekszal dajemy serial
+
+create table nazwa_tabeli(
+index serial primary key,
+nazwa varchar(80)
+);
+alter table nazwa_tabeli add constraint nazwa_ograniczenia check(...);
+
+alter table nazwatabeli alter column nazwa_kolumny set not null;
+alter table nazwatabeli alter column nazwa_kolumny drop not null;
+
+alter table nazwa_tabeli drop constraint nazwa_ograniczenia;
+
+
+
 
