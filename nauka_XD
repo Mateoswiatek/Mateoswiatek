@@ -199,5 +199,27 @@ alter table nazwatabeli alter column nazwa_kolumny drop not null;
 alter table nazwa_tabeli drop constraint nazwa_ograniczenia;
 
 
+create table dzialy(
+iddzialu char(5) primary key,
+nazwa varchar(32) not null,
+lokalizacja varchar(23) not null,
+kierownik integer not null
+);
+
+create table pracownicy(
+idpracownika integer primary key,
+nazwisko varchar(32) not null,
+imie varchar(16) not null,
+dataUrodzenia date not null,
+dzial char(5) not null,
+stanowisko varchar(24),
+pobory numeric(7,2)
+);
+
+alter table dzialy add constraint dzial_fk foreign key(kierownik) references pracownicy(idpracownika) on update cascade deferrable;
+alter table pracownicy add constraint pracownicy_fk foreign key(dzial) references dzialy(iddzialu) on update cascade deferrable;
+
+select * from dzialy;
+select * from pracownicy;
 
 
