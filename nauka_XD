@@ -222,4 +222,409 @@ alter table pracownicy add constraint pracownicy_fk foreign key(dzial) reference
 select * from dzialy;
 select * from pracownicy;
 
+select * into atakujace from...
+
+insert into atakujace(nazwy atrybutow) values
+select * from...;
+
+alter table nazwa_tabeli
+	add column nazwa varchar(40) check(length(nazwa) > 5);
+
+not null
+uniqe
+primary key, ewentualnie na koncu w tabeli primary key(atr1, atr2) - przy bardziej zlozonych
+default 2 / default nextval('nazwa_tabeli_nazwa_kolumny_seq')
+check(warunek) check(premia<pensja)
+foreign key(nazwa_kolumny_w_tej_tabeli) references tabela_glowna(nazwa_atrybutu_w_glownej);
+mozna nazwac ograniczenia
+constraint nazwa_ograniczenia check(pensja>permia);
+
+create table nazwa_tabelki(
+id1 integer,
+id2 integer,
+...
+primary key(id1, id2)
+);
+
+create table kompozycje(
+idkompozycji varchar(20),
+nazwa varchar(20) uniqe not null,
+opis varchar(200),
+cena numierc(7,2) not null,
+stan integer default 2
+);
+
+alter table kompozycja add constraint min_cena check(cena>=40.00);
+
+
+select login || 'ALT', id+1, data_urodzenia, current_date into klienci from klienci 
+where id_klienta = (select max(id_klienta) from klienci);
+
+
+foreign key(i1, id2) references tabela1(id_1, id_2);
+
+create table zamowienia(
+...
+
+primary key(idzamowienia),
+foreign key(idklienta) references klienci on update set null,
+foreign key(data_realizacji) references xd
+);
+
+3NF jest w tedy, kiedy po lewej stronie jest klucz, lub po prawej stronie są tylko kluczowe.
+najpierw zawsze trzeba określić klucze w danym zbiorze, do 3NF da się ogarnąć zawsze.
+
+2NF jest w tedy, kiedy nie ma sytuacji, że z częsci klucza wynika niekluczowy.
+klucz to AD
+A -> C - blad
+AE -> B - okej, bo AE nie jest czescia klucza
+A -> D - okej, bo D jest kluczowe
+
+x.re - postgresql bedzie szukal tabeli o nazwie x a w nej kolumny o nazwie re
+(x).re - mowi posgresowi, ze x jest typem zlozonym,a nam chdzoi o pole re. tak jak w javie, dostp do pola skladowego. w postgresql taki dostep, a abrdziej inforamcje, ze chozi nam o typ zlzoyn dajemy dodajac wlasnie te nawiasy.
+
+alter table nazwa_tabeli rename column stara_nazwa to nowa_nazwa;
+
+chodzi o to, aby referencje sie zgadzaly, przy usuwaniu uaktualnianiu.
+
+alter table nazwa_tabeli 
+	add constraint foreign key(id_uzytkownika) references userzy(id_usera) on delete set null on update cascade
+	
+mozna:
+
+cascade
+set null
+set default
+no action
+restrict
+
+alter table nazwa_tabeli
+	add column cena numeric(7,2) check(cena>=40.00);
+
+alter table nazwa_tabeli drop column cena cascade; -- pwszystkie powiazane tez usunie
+alter table nazwa_tabeli rename column stara_nazwa to nowa_nazwa;
+alter table nazwa_tabeli rename to nowa_nazwa_tabeli;
+
+alter table nazwa_tabeli add constraint nazwa_ograniczenia foreign key(atrybut1, atr2) references siatkarki(iddruzyny, numer);
+
+alter table nazwa_tabeli add constraint nazwa_ograniczenia check(pensja>premia);
+alter table nazwa_tabeli add constraint nazwa_tabelki_pk primary key(atr1, atr2);
+
+alter table nazwa_tabeli alter column cena set not null;
+
+alter table nazwa_tabeli drop constraint nazwa_ograniczenia cascade ;
+
+alter table nazwa_tabeli alter colkumn drop not null;
+
+alter table nazwa_tabeli alter column nazwa_kolumny set default 2;
+alter table nazwa_tabeli alter column nazwa_kolumny drop default;
+
+alter table nazwa_tabeli alter column nazwa_kolumny type numeric(10,2);
+
+drop from table nazwa_tabeli;
+
+drop table nazwa_tabeli
+
+drop table if exist nazwa_tabeli cascade
+restrict
+krotnosci - określenie ile maksmalnie i miniamlnlie może być "wysąpień" danej encji w relacji.
+oznaczamy 1:* - gwiazda to nieskocznoność, nie ma ograniczegnia górnego.
+1:1
+1:n
+n:n 
+
+alter table nazwa_tabeli alter column nazwa_kolumny set default 2;
+alter table nazwa_tabeli alter column nazwa_kolumny drop default;
+
+BCNF - w tedy kiedy po lewej stornie zawsze jest klucz, wiec jest klucz albo nadklucz. 
+zawsze przed okreslaniem postaci normalnej trzeba okreslic klucze danej relacji.
+zawsze da sie zrobic, ale mozemy stracic zaleznosci funkcyjne.
+
+select distinct(nazwa_atrybutow) from tabela;
+select distinct nazwa_atrybutu, inny_atrybut from tabela;
+
+tabele słownikowe - lepsza alternatywa dla enumow
+
+create table nazwa_tabeli(
+);
+
+w wierszach sa dozwolone wartosci, dobre bo moga usrzy bez praw dodawac do tego kolejne wawrtosci np miasta, jesli kto doda krakow, to inni tez juz mogą dodawać.
+latwy dostep do wszystkich dozwoloinych wartosci, mozna latwo przenoscic miedzy bazami danych
+
+create table pora_roku(
+nazwa varchar(10) primary key
+);
+
+albo 
+create table pora_roku(
+index serial primary key,
+nazwa varchar uniqe not null
+);
+
+latwe usyznaknie zbioru dozwolonych wartosci, latwe aktualizaowanie zawartoscsi, ulatwiaja przenosnosc miedzy systemami baz danych.
+
+alter table nazwa_tabeli drop column nazwa_kolumny cascade;
+
+t true, 1, y yes, 'true',
+n no f false 0 'false'
+
+alter table nazwa_tabeli add column nazwa_kolumny numeric(7,2) uniqe not null default 2.0;
+mozna dawac to co dla zwyklego tworzenia kolumny, wartsosci checki itp itd
+alter table nazwa_tabeli drop column nazwa_kolumny cascade;
+alter table nazwa_tabeli rename column stara_nazwa to nowa_nazwa;
+alter table nazwa_tabeli rename to nowa_nazwa_tabeli;
+
+alter table nazwa_tabeli add constraint nazwa_ograniczenia check(pensja>premia);
+alter table nazwa_tabeli add constraint nazwa_ograniczenia_fk foreign key(atr1, atr2) referrences siatkarki(iddruzyny, numer);
+alter table nazwa_tabeli alter column nazwa_kolumny set not null;
+alter table nazwa_tabeli alter column nazwa_kolumny drop not null;
+alter table nazwa_tabeli alter column nazwa_kolumkny set default 2;
+alter table nazwa_tabeli alter column nazwa_kolumny drop default;
+alter table nazwa_tabeli alter column nazwa_kolumny type numeric(10,2); -- powiedzie sie, jesli wszytkie wawrtosci mozna przekonwertowac, mozna dodac using() w celu okreslenia sposoboy konwersji.
+
+drop table nazwa_tabeli;
+drop table if exists nazwa_tabeli cascade; 
+drop table if exists nazwa_tabeli restrict; -- nie bedzie mozna usunac jesli sa jakies odowolania do tej tabeli.
+restrict
+drop table if exists nazwa_tabeli;
+sekewncje - generatory
+
+create sequence seq1;
+create sequence seq2 increment by 2 start with 1 min value 1 maxvalue 3 cycle;
+
+craete sequence seq6 minvalue 1 maxvalue 3 cycle
+create sequence seq7 increment by -1 maxvalue 5 start with 5 minvalue 1;
+
+craete table nazwa_tabeli(
+indeks integer primary key default nextval('seq1');
+znak char
+);
+table slownikowe, ulepszenie enumiwo, latwy dostęp do zbioru wsyztkich mozllywch waratosci dozwolonych, mozna dodawac jako user, bez praw do pisania kodu, dynamicznie mozna,
+latwosc przenoszenia itp itd, modyfikacji
+
+craete table tabela_slownikowa(
+index serial primary key,
+nazwa varchar(10)
+);
+w wierszach sa dozwolone wartosci. 
+przyspiesza uzyskiwanie zboru dopuszczalnych wartości dla atrybutu, łatwe aktualizowanie zawartości, ułatwia przenoścność między różnymi systemami baz danych.
+rekurencje
+wielu do wieu
+złożone związki
+
+
+wiele do wielu - tworzone jest pomoicncze, rozbijamy na dwie lub woecej reali 1 do n
+np wizyty
+userzy i nieruchoosci - dodajemy zbiór "wizyty" gdzie sa klucze jednego i drugiego + data wizyty // uwagi inne rzeczy.
+
+rekurecnyjne - albo dostaiwamy do każdego kolkumne i tam jest klkucz obcy jako klucz glowny z tej tabeli
+albo tworzoym nowa tabele gdzie parujemy dwa klkucze obce z tej saemj tabli, jeden jakko kierownik, drugi jako pracownik / podwładny
+
+zlozone - rozbijamy na wiele realci jeden do n, tworzymy dodatkowy zbiór, i tam okresłamy jakie powinny być krotności. 
+
+BCNF - po lewej zawzzse jest klucz
+3NF - po lewej jest klucz lub po prawej sa tylko kluczowe atrybtuy
+2NF - nie ma sytuacji, że niekluczoy zależy od części klucza (nie ma zalweżności funkcyjcnych częściowych)
+1NF - wszytkie wartosc→ są wartoścami atomicnzinymi - to zakładamy że jest spełnione.
+
+zawzses trzesba okreslić klucze, aby otrzymac roœneiż atrybtuy kluczowe.
+alter table nazwa_tabeli add column nazwa_kolumny numeric(7,2) constraint check(cena>=40.0);
+alter table nazwa tabeli drop column nazwa_kolumny cascade;
+alter table nazwa_tabeli rename column nazaw_kolumny to nowa_nazwa;
+alter table nazwa_tabeli rename to nowa_nazwa_tabeli;
+alter table nazwa_tabeli add constraint nazwa_ograncizenia check(pensja>premia);
+alter table nazwa_tabeli add constraint tabela_fk foreign key(atr1, atr2) references siatkarki(iddruzyny, numer) on update cascade;
+alter table nazwa_tabeli drop constraint nazwa_ograniczenia;
+
+alter table nazwa_tabeli alter column cena set not null;
+alter table nazwa_tabeli alter column cena drop not null;
+alter table nazwa_tabeli alter column cena set default 2;
+alter table nazwa_tabeli alter column cena drop default;
+alter table nazwa_tabeli alter column type numeric(10,2); -- zadziala, jesli wsztkie wartosci w tej kolumnie mozna przekonwertowac na ten typ, mozna uzyc using() aby okreslic typ konwersji. 
+drop table if exists nazwa_tabeli restrict albo cascaade
+drop table nazwa_tabeli;
+drop table if exists nazwa_tabeli restrict;
+drop table if exists nazwa_tabeli cascade;
+alter table nazwa_tabeli add constraint nazwa_ograniczenia check(pensja>premia);
+
+alter table nazwa_tabeli alter column cena set not null;
+alter table nazswa_tabeli drop constraint nazwa_ograniczenia;
+alter table nazwa_tabeli alter column cena drop not null;
+alter table nazwa_tabeli add constraint nazwa_ograniczenia foreign key(atr1, atr2) references siatkarki(iddruzyny, numer) on update cascade 
+on deley no action
+
+set null
+set default
+cascade
+restrict
+BCNF - po lewej klucz lub nadklucz
+3NF - po lewej klucz lub po prawej tylko kluczowe
+2NF - nie ma sytacji, ze niekluczowy zalezy od części klucza
+1NF - wszsytkei wawrtości są atomiczne
+
+trzeba zawsze wyznaczyc klucze i tez atrybuty kluczowe.
+1.
+select nazwisko, wiek, pobory*12 from pracownicy order by pobory desc, nazwisko;
+2.
+select nazwisko, imie, dataUrodzenia, stanowsiko, dzial, pobory where
+stanowsiko in ('robotnik', 'analityk') and pobory > 2000.0;
+3.
+select nazwisko, imie from pracownicy where
+pobory > (select pobory form pracownicy where imie = 'Adam' and nazwisko = 'Kowalik');
+4.
+update pracownicy
+set pobory = pobory * 1.1
+where stanowisko = 'robotnik';
+5.
+select stanowisko, avg(pobory), count(*) from pracownicy
+where stanowisko <> 'kierownik'
+group by stanowisko;
+trzeba dodać za pomoca 
+alter table nazwa_tabeli add constraint tabeli_fk foreign key(atr1, atr2) references tabela2(iddruzyny, numer);
+
+mozna nazywac kluzce obce, najlepeij jest dawac zalenzosci na samym koncu kedy wsyztkie tabele sa juz utworzone, albo jest flaga ktora zapewnia, ze wiezy poprawnosci sa sprawzane przed samym koncem tranzackji.
+klucz obcy jako foreing key
+nalezy dać not null do klcza obcego.
+
+deferrable;
+references bar(id) deferrable;
+BCNF - po lewej klucz ablo nadklucz
+3NF - po lewej klucz lub po prawej tylkok kluczowe
+2NF - nie ma sytuacji, że niekluczowy zależy od części klucza.
+1NF - wszytkie atrybuty są atomiczne - atomowoe, nie można ich podzielić na żadne mniejsze części.
+zawsze trzeba wyznaczyć klkucz oraz atrybuty kluczowe.
+1.
+select nazwisko, wiek, pobory*12 from pracownicy orer by pobory desc, nazwisko;
+2.
+select nazwiso, imie, dataUrodzenia, stanowsiko, dzial, pobor from pracownicy 
+where stanowsiko = any ('analityk', 'robotnik')
+where stanowsiko in ('analityk', 'robotnik')
+and pobor > 2000;
+3.
+select naziwsko, imie from pracownicy where 
+pobor > (select pobor from pracownicy where imie = 'Adam' and nazwisko = 'Kowalik');
+4.
+update pracownicy
+set pobory = pobory * 1.1 
+where stanowisko = 'robotnik';
+5. 
+select stanowsiko, avg(pobory), count(*) from pracownicy
+where stanowsiko <> 'kierownik'
+group by stanowisko;
+klucz glowny atuomatyczne zwiekzanie
+ablo 
+
+create sequence seq1;
+create table nazwa_tabeli(
+id integer primary key default nexval('seq1');
+nazwa char(10)
+);
+
+albo 
+create table nazwa_tabeli1(
+id serial primary key, -- to tworzy sequence 'nazwa_tabeli1_id_seq' i ma default nextval('stworozna sekwernsja'). ten typ jest oczoywiscie integer
+nazwa char(10)
+);
+create sequence seq1 increse by 2, maxval 5, startval 1 cycle;
+x is not distinct from y;
+x = y, jesli ob nulle to true, 
+gdy awrtsoci to = 
+gdy jeden null drugo cos inngo to false
+x is not distinct from y
+x is not distinct from y;
+create table nazwa_tabeli(
+id serial primary key,
+nazwa varchar(20)
+);
+
+albo
+create sequence seq1; -- increment by 1;
+create table nazwa tabeli1(
+id integer primary key default nexval('seq1'),
+nazwa varchar(20)
+);
+create table diety(
+id_diety serial primary key,
+nazwa...
+);
+
+albo 
+create sequence diety_id_diety_seq; -- increment by 1 startval 0
+
+craete table diety(
+id_diety integer primary key default nextval('diety_id_diety_seq');
+...
+);
+BCNF - po lewej jest klucz ablo nadklucz
+3NF - lewa jest klucz lub prawa sa tylko kluczowe
+2NF - nie ma sytuacji, aby niekuczowy zalezal od czesci klucza
+1NF - wszystkie wartosci są atomiczne
+wyznaczamy se klkucze, potem  z tego mamy kluczowe, i oto woda, co stoi na przeszkodzie, sprawzamy kotre warnuki sie zgadzaja, jesli nie jest w nizszej, to nie myze byc w wyzszej, jesli jest w wyzszej to na pewno jest w nizszej (chyba z wyjatkiem 1nf)
+select possition('a' in 'ala) -> 1 bo liczxymy od 1 w sqlu
+zaleznosci funckyjne - trzba policzyc rzuty na wszytkie h, i potem jesli domkniecie tranzytywne sumy naszych rzutuow, jesli z tego domkniecia wynika funkclyjne / logicznie, no da sie wyprowadzić wszystkie zalenzosci z h, to w tedy taka dekompozycja zachowuje zaleznosci funkcyjne.
+drop table nazwa_tabeli;
+
+drop table nazwa_tabeli restrict/ cascade
+powoduje usuniecie wsyzktich powiazanych zalenoszsic, ogrnaczien, licznikow, generaotrow, wyzwalaczy itp itd
+drop table if exists nazwa_tabeli cascade / restrict
+create table temporary nazwa_tabeli(
+id serial primary key,
+nazwa varchar(40) constraint nazwa_ograniczenia check(length(nazwa) > 5),
+id_zewnetrzen not null foreign key references tabela(id_glowne) on update cascade
+);
+
+rozszerzac, mozna dodawac
+alter table add constraint nazwa_ograniczenia
+	foreign key(iddruzyny, numerek) references siatkarki(iddruzyny, numer) on update cascade;
+alter table add constraint nazwa_ograniczenia2
+	check(premia<pensja);
+alter table add column nazwa_kolumny varchar(23) not null;
+inherits - dziedziczczymy po jakeijs innej tabeli
+BCNF - po lewej tylko klkucz albo nadklucz
+3nf - po lewej jest se kllucz / nadklucz, no oglnie zawiera w sobie klucz, lub po prawej stornie są tylko atrubyty kkuczowe, wszytkie po prawej stronie mszą być klkuczowe.
+2NF - wsyztko te, kto©e nie zaweirają zależności funkcyjnej częściowej, czyli takiej, w której element niekluczowy ( nie jest częścią żadnego kluzca)  zależy od części klucza.
+1NF - wszytkeie watości atrybutów są atomiczne - nie da się ich już rozdzielić w żaden sposób.
+zawszse na początku trzba wyzaczyć wszytkie klucze, nastepnie z tego mamy atrybuty kluczowe, na tej postawie możemy dalej określać w jakiej postaci normalnej co się znajduje.
+T jest kluczowe, bo nie znajduje się po prawej stornie żadnej z produkcji, więc w klkuczu musi występować T.
+nie jest w 2nf, bo kluczami są TG i TP, natomiast zależność funkcjyna P -> W. W nie jest kluczowe i zależy od częsci klucza (P jest częścią klucza) więc nie jest w 2nf. jest w 1nf.
+jakby było PA ->W to to by było git, bo PA nie jest częscią podklucza, patrzymy na cała lewa cześć a nie na poedyńcze atrybuty.
+trzseba zrobic 
+
+create temporary table pracownicy(
+id_pracownika serial primary key,
+id_szefa integer,
+imie varchar(20)
+);
+
+alter table pracownicy add constraint pracownicy_id_szefa_fk
+	foreign key(id_szefa) references pracownicy(id_pracownika);
+treba zrobic 
+alter table wives add constraint wives_husband_fk
+ foreign key(kusband_id) references husbands(id);
+ 
+alter table husbands add constraint husbands_wife_id_fk
+foreign key(wife_id) references wives(id);
+bierzemy lewa strone tej zalenosci fucnkyjne, i stusując zależności funkcyjne z F
+obliczamly domknięcie tranzytywne. jeśli w omknięcu tranzytywnym znajduej się to co
+jest po prawej stornie spawdzanej zależności fun ckjynej (może być więcej, więcej nas nie obchodzi)
+no to jeśli jest, to zanczy że ta zależność należy do F+, bo z F można to wywnioskować (mając to co jest danee po lewej stornie)
+create table zawartosc(
+idpudelka char(4) not null,
+idczekoladki char(3) not null,
+sztuk integer
+);
+alter table zawartosc add constraint zawartosc_pk
+primary key(idpudelka, idczekiladki)
+
+alter table zawartosc add constraint zawartosc_idpudelka_fk
+ foreign key(idpudelka) references pudelka;
+alter table zawartosc add constraint zawartosc_idczekoladki_fk
+foreing key(idczekoladki) references czekoladki;
+
+serial 
+aalter table nazwa_tabeli alter column nazwa_kolumny type numeric(10,2);
+- dokona się tylko w tedy, keidy kazdy rekord można zamienić na ten nowy typ.
+można użyc 
+using() aby określić w jaki sposób ma zostac dokonana konwersja pomiędzy typami, stary a nowy.
+
 
