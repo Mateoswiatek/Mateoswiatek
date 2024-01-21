@@ -931,4 +931,251 @@ skalarne, krotkowie, relacyjne. polimoriczne - any, zbiory rekdorów itp itd, je
 any type i any array, to musza być powiązane, any array musi byc złoózony z anytype. mozemymmiec wieel zmiennych o anytype,
 ale w wywolaniu wsyztkie te wartosci musza mieć taki asm typ
 np wsytkie to inty, innym razemw szytkie to varchary itp itd. musi byc zgodnośc
+alter table nazwa_tabeli add column nazwa_kolulmny type
+alter table nazwa_tabeli add column cena numeric(7,2) constraint cena_minimalna ckeck(cena >= 40.00);
+
+alter table nazwa_tabeli add colkumn cena numeric(7,2) unique not null;
+
+alter table nazwa_tabeli drop column nazwa_kolumny cascade;
+
+alter table nazwa_tabeli rename column nazwa_kolumny to nowa_nazwa_kolumny;
+
+alter table nazwa_tabeli rename to nowa_nazwa_tabeli;
+
+alter table nazwa_tabeli add constraint nazwa_tabeli_iddruzyny_fk foreign key(iddruzyny) references druzyny(id) on update cascade;
+
+alter table nazwa_tabeli alter column nazwa_klumny set not null;
+alter table nazwa_tabeli alter column nazwa_kolumny drop not null;
+alter table nazwa_tabeli drop constraint nazwa_ograniczenia cascade;
+
+alter table nazwa_tabeli alter column nazwa_kolkumny set default 5;
+alter table nazwa_tabeli alter column nazwa_kolkumny drop default;
+
+alter table nazwa_tabeli alter column nazwa  -- wczesniej bylo varchar(20)
+type integer 
+using(lenght(nazwa)); -- uda sie tylko w tedy koedy da sie przekonwertowac, jesli ejst to trywialne to zrobi sie autaomatycznie, 
+dropo table nazwa_tabeli cascade restrict
+
+drop table if exists nazwa_tabeli cascade restrict
+cascade - usuwa tez wsyztkie z ta powiązane
+restrict - nie pozwala usnunąć jesli istneija jakies powiazania.
+if exist - tylko w teday kiedy istneije, jak nie istnieje to to pomija.
+create function nazwa_funkcji(in cena numeric(7,2)) returns numeric(7,2) as
+$$
+declare
+	zmienna varchar(20);
+	cena1 numeric(7,2);
+begin
+
+	return;
+end;
+$$
+language plpgsql;
+
+
+zmienne w declare,
+kkompilowan jest dopeiro przy poeirwsyzm uruchomieniu funkcji, sa uzanwane za dwie rozne, jesli maja rozne nazwy, lub rozne arguemnty, lub ronze typy argumentow
+create function nazwa_funkcji(cena numeric(7,2)) returns numeric(7,2) as
+$$
+declare
+	zmienna integer;
+	zmienna2 numeric(7,2);
+begin
+
+end;
+$$
+language plpgsql;
+ale więcej w pliku se bedzie
+drop function nazwa_funkcji(numeric(7,2));
+create or replace function suma_zamowien(id_klienta_v integer)
+returns numeric(7,2) as
+$$
+declare
+    suma numeric(7,2);
+begin
+	select sum(sztuk*cena) into suma
+    from zamowienia natural join artykuly natural join pudelka
+	where idklienta = id_klienta_v;
+    return suma;
+end;
+$$ language plpgsql;
+
+select suma_zamowien(7);
+
+create or replace function rabat2(id_klienta_v integer)
+returns numeric(7,2) as
+$$
+declare
+	suma numeric(7,2);
+	wartosc_rabatu numeric(7,2);
+begin
+	select suma_zamowien(id_klienta_v) into suma;
+	wartosc_rabatu = suma * case
+        when suma < 75 then 0.05
+	    when suma between 75 and 110 then 0.07
+	    else 0.08
+    end case;
+	return wartosc_rabatu;
+end;
+$$ language plpgsql;
+select rabat2(7);
+
+create or replace function rabat2(id_klienta_v integer)
+returns numeric(7,2) as
+$$
+declare
+	suma numeric(7,2);
+begin
+	select suma_zamowien(id_klienta_v) into suma;
+	return suma * case
+        when suma < 75 then 0.05
+	    when suma between 75 and 110 then 0.07
+	    else 0.08
+    end case;
+end;
+$$ language plpgsql;
+
+
+select rabat2(7);
+
+create or replace function sumaZamowien(_idklienta integer) returns numeric(7,2) as
+$$
+declare
+	suma numeric(7,2);
+begin
+	select sum(cena*sztuk) into suma
+        from zamowienia
+        natural join artykuly
+        natural join pudelka
+        where idklienta = _idklienta;
+	return suma;
+end;
+$$ language plpgsql;
+
+select sumaZamowien(7);
+-- kod jest kompoilowany w tedy kiedy pierwsy raz uruchomimy funkcję, i dopierio w teyd mozemy sprawdzic czy wszytko sie zgadza.
+kiedy jest ina nazwa, lub inny typ parametrow, lub inna liczba parametrow
+
+deklarujemy w sekcji 
+declare
+klamry robimy za pomocą $$ $$
+create or replace function testowa(cena numeric(7,2)) returns numeric(7,2) as
+$$
+begin
+	if cena < 0.0 then
+        raise exception 'nieprawidlowa cena %, %', cena, $1; -- ablo $1 - odwołanie do atrybutow
+    else raise notice 'licze dla %', cena;
+    end if;
+	return cena;
+end;
+$$ language plpgsql;
+
+select testowa(4.4);
+select testowa(-4.4);
+
+create function nazwa_funkcji(cena numeric(7,2)) returns numeric(7,2) as
+$$
+declare 
+	zysk numeric(7,2);
+begin
+	if cena<0.0 then raise exception 'Nieprawidlowa cena %', $1; -- lub zamist $1 można dać cena
+	else raise notice 'Liczymy dla: %', cena;
+	end if;
+
+	zysk = case 
+		when x < 10 then 0.05 
+		when x between 50 and 199 then 0.6
+		when x between 200 and 400 then 1
+		else 2;
+		end case;
+end;
+$$ language
+
+create function rabat3(id_klienta_ integer) returns numeric(7,2) as
+$$
+declare
+	suma numeric(7,2);
+    rabat numeric(7,2);
+begin
+	suma = sumaZamowienia3(id_klienta_);
+	rabat = suma * case
+			when suma < 75 then 0.05
+			when suma between 75 and 110 then 0.07
+			else 0.08
+		end case;
+	return rabat;
+end;
+$$ language plpgsql;
+
+
+create function sumaZamowienia3(id_klienta_ integer) returns numeric(7,2) as
+$$
+declare
+	suma numeric(7,2);
+begin
+	select sum(cena*sztuk) into suma from zamowienia natural join artykuly natural join pudelka where idklienta = id_klienta_;
+	return suma;
+end;
+$$ language plpgsql;
+
+select sumaZamowienia3(7);
+select rabat3(7);
+
+if cena < 0.0 then raise exception 'Nieprawidlowa wartosc dla ceny: %', cena;
+else raise notion 'Licze dla: %', $1;
+end if;
+
+create function nazwa_funckji(cena numeric(7,2)) returns numeric(7,2) as
+$$
+declare
+	sum numeric(7,2);
+begin
+	if cena < 0.0 then raise exception 'Nieprawidlowa cena %', cena;
+	else raise notice 'Licze dla: ', $1; 
+	end if;
+
+	return numeric(7,2);
+end;
+$$ language plpgsql;
+BCNF - po lewej zawsze jest klucz
+3nf - po lewej zawze jest klucz lub po prawej są tylko kluczowe
+2nf - nie ma zalezżnośći częściowych. atrybuty niekluczowe nie mogą zależeć od częsci klucza.
+1nf - wsyztkie atrybuty są atomiczne - nie da się ich ppodzieic.
+
+nazwa record
+
+musi być tylo jeden weirsz
+
+jest zmienna found logiczna, ktora przchowuje inforamcje, czy w zmiennej typu record coś jest czy nie, czy ostatnia oeraca się udała.
+
+typ record jest typem złożónym, dostosuje się do jednej krotki z realcji dowoklnej, musimy zapewnoić, że podzpaytanie zwróci tylko jeden rekord.
+można to wykorzystać podczas operowania na select. 
+select *
+        from zamowienia
+        natural join artykuly
+        natural join pudelka
+        where idklienta = 7 limit 1;
+
+create or replace function nazwa_funkcji(idklienta_ integer)
+returns numeric(7,2) as
+$$
+declare
+	r record;
+begin
+	select * into r
+        from zamowienia
+        natural join artykuly
+        natural join pudelka
+        where idklienta = idklienta_ limit 1;
+	return r.cena;
+end;
+$$ language plpgsql;
+select nazwa_funkcji(7);
+
+drop function nazwa_funkcji(integer);
+
+
+
+
+
 
