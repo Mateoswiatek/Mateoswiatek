@@ -626,5 +626,309 @@ aalter table nazwa_tabeli alter column nazwa_kolumny type numeric(10,2);
 - dokona się tylko w tedy, keidy kazdy rekord można zamienić na ten nowy typ.
 można użyc 
 using() aby określić w jaki sposób ma zostac dokonana konwersja pomiędzy typami, stary a nowy.
+podzapytanie to zapytanie które jest częścią innego zapytania, mogą być zagnieżdzone dowolną ilość razy wewnątrz siebie. zwykłe select, ale musi być  typie
+(select ....)
+mamy 
+skalarne - jedna wartosc
+krotkowe - krotka jeda 
+relacyjne -  tabela
+gdy porownujemy, podzapytanie mus byc po prawej stronie. jeśli chodzi o tabele w from, to muszą mieć alias zrobiony, abyśmy mogli się do tego odnosić.	
+podzapytnaia trzeba dawać w ()
+where nazwa in (select nazwa from ....;)
+binarne związki 1 do 1, no to łączymy je do jednej tabli, wyiberamy sobie klucz główny. 1-1 1-1, nie mogą istnieć bez siebie
+jeśli jest 
+11 1-n no to tam gdzie jest 1-n to wstawiamy klucz z tego 1:1
+jesli po obu sronach jest 1-n 1-n, no to wybieramy ktory jet ważniejszy, ewetnaulnie pośrednią robimy. 
+podzapytanie moze się odnosic do atrybutów z otaczającego go zapytania, poprzez korpke
+nazwa_tabeli.atrybut. w tedy takie zapytania są nazywane skorelowanymi, bo ich wynik zależy od otoczenia. takie podzapytanie jest wykonywane na nowo przy każdym obiegu "pętli" w senise dla każdego rekodru jest liczone poononwie, dzięki temu wartość zwracana przez podzapytanie jest / może być różna dla każdego z rekordów.
 
+select nazwsiko, imie (select max(punkty) from punktujace where punktuajce.numer = siatkarki.numer and punktujace.iddruzyny = siatkarki.iddruzyny) as maksimum from siatkarki order by maksimum desc;
+porównanie z podzapytaniem, podzapyanie musi byc po prawej stornie 
+
+wyliczeniowe - enum 
+create type pory_roku as enum('wiosna', 'lato', 'jesien', 'zima');
+i tera ta, tam gdzie jest skonczony zbor mozliwych wartosci, lepiej jest sotosowac tablice / tabele slownikowe - tabele z wartoscami dozwolonymi, ewentualnie domeny - typy proste z ogranizeniami narzuconymi, np kod pocztowy '[0-9]{2}\-[0-9]{3}'
+ale tak to uporzadkowaene sa w takiej koklenosci jak dodalismy, jesli chemy porownac dwie wartosi enumow to musimy je zrzutowa na stringa. 
+wielkkosc liter ma znaczenie.
+używać możemy jak kazdego innego typu 
+create table sezony(
+rok ineger,
+pora pora_roku,
+primary key(rok, pora)
+);
+
+insert into sezony values(1, 'wiosna');
+insert into sezony values(1, 'wiosenka'); - nie przejdzie, bo sie nie zgadza z enumem.
+do sprawdzania poprawnosci danych np.
+select nazwisko, imie (select max(punkty) from punktujace p where p.iddruzyny = s.iddruzyny and p.numer = s.numer) from siatkarki s;
+to jest z uzyciem podzapytania skorelowanego, bo odwolujemy sie do elementow z zapytania otaczającego. można sie odwoływac do atrybutów ze wszystkich wyższych podzapytań, tak jakby pętla w pętli w pętli , etc. trezba dawać aliasy, albo po prostu całe nazwy. przy tabelach nie używamy słówka 'as' tylko po prstu from punktujace p, from siatkarki s.
+as używamy w sekcji select. select max(punkty) as maksimum,  
+w podzapytaniu nie mozna używać formuly order by, bo to jest bez sensu. bo i tak jest to jako zbior przekazywane
+select nazwisko, imie, punkty from siatkarki natual join punktujace
+where punkty >= ((select max(punkty) from punktujace) - 5); -- czyli te ktora maja maxa aalbo maksymlanie 5 mniej.
+podzapytanie to zapytanie ktore jest częscią większego zapytania. jest w nawiasach (), może się odwoływać do atrybutów z otaczającego go zapytania, w tedy jest to podzapytanie skorelowane, jeśli nie odwołuje się, to jest to nieskolerowane. nieskolerowane podzapytania zwracają za każdym razem taki sam wyniki, oraz możey je uruchomić niezalżnie, tak jak każde inne zapytanie.
+są rodzaje podzpaytań
+skalarne - pojedyńcza wartość.
+krotkokwe - pokedyńcza krotkia, rekord, kilka wartości w senise jakko kilka atrybutóœ ale każdego atrybutu jest tylko jedno wystąpienie.
+relacyjne - tu jest zbiór krotek - cała relaja, tabela
+Podzapytanie może się odwoływać do otacającego go zapytania, w teyd jest to podzpytanie skorelowane, domyslnie w danym zapytaniu, nazwy atrybutów odnosza sie do tego konrkegnoeg, jesli chcemly do wyżsych, to najpeirw nazwę ich tabeli, nazwy z ich zpaytnaia from. najczęsiej sie robi aliasy aby n ie pisć doużo, przy formule from dajemy po pseoty aloas
+typu 
+from siatkarki s, from punktujaace p. natomiast w sekcji select dajemy as 
+select (imie || ' ' || nazwisko) as dane_osobowe
+select max(pkt) as max i tak dalej.
+
+select nazwisko, imie, (select max(punkty) from punktujace p where p.iddruzyny = s.iddruzyny and p.numer = s.numer) as maksimum from punktujace natural join siatkarki s; 
+ewentualnie zamist aliasow byloby punktujace.iddruzyny = siatkarki.iddruzyny and punktuajce.numer = siatkarki.numer)
+Minimalny zbior zalezności 
+1. ma tylko zalenosci proste - po prawej stornie są pijedyńcze wartośći
+2. nie ma regół które da się wypporwadzić z innych pozostałych
+3. nie ma nadmiarowości, jeśli mamy dwiereguly ktore produkuja to samo, a lewe storny, jedna jest podzbiorem drugiej, to bierzemy tą m nijszą, ten podzbiór np
+A -> B
+AC -> B. nie potrezbuejmy tej, ona jest nadmiarowa.
+select nazwisko, imie punkty from siatkarki natural join punktuajce
+where punkty >= ((select max(punkty) from punktujace) - 5)
+order by punkty desc;
+select nazwa, miasto from druzyny d
+where 25 < (select sum(punkty) from punktujace p where p.iddruzyny = d.iddruzyy)
+albo
+selct nazwa, miasto from druzyny wehre iddruzyny in (select iddruzyny from puntkuajce where punkty > 25);    
+
+select nazwa, miasto from druzyny d
+where exists (select 1 from punktujace p natural join siatkarki where p.iddruzyny = d.iddruzyny and  punkty > 8 and pozycja = 'rozgrywajaca');
+
+select nazwa, miasto from druzyny d
+where not exists (select 1 from punktujace p natural join siatkarki where p.iddruzyny = d.iddruzyny and punkty > 25);
+nazwa = any / all (... podzapytanie) 
+= < > >= =< <>
+not 
+= any == in 
+<> all == not in
+bo z algebry, prawo demorgana i tak dalej.
+
+cena > any (select cena from..)
+cena <> all (select cena...)
+obowiazkowe i - jedna tabela i dwie falgi, - dyskryminatory ? ktore okreslajaj ktora werjsa jest, jaki jest typ
+opcjonalne i - tworzymy dwie tablice. jedna z samym wlasniicelem, i druga ze szczegolami, gdzie dajym dwie fali - dyskryminatory ktore okreslaja ktora szcczegoly sa. do tej drugiej daiemy id z glownego, z klienta, ze jeslu jest rekord, toznaczy ze ten wlasncieel jest jedym z tych dwoch 
+
+obowiazkowe lub -jedna tabela oddzielnie dla kazdego. w senesi dwie tablee, gdzie w kazdej jest pelna zawrtosc wlasciciela oraz dodatkowe wartosci. mozna przy tworzeniu nac inherits wlasciciele. w tedy sie skopuja tabele i ograniczenia ( chyba też ??)
+opcjonalne lub - tworzymy trzy table, n tabel +1, jedna głowa dla samego wlasiciela, i po jeden dla kazdego z mozliwych podgrupp. 
+<> any - nie wszystkie sa takie same
+<> all - jest unikatory
+
+x >= all (select x from ) - zwraca wszytkie nulle, jesli bezdie null, to tu beze pusto, bo neie ma pwoneosci, cxzy x jest wiekszy od tego co kryje sie pod nullem.
+x >= (select max(x) from)... - pomija nulle, 
+rekurencje, jesli est n do n rekurencyjnie, to najlatwiej dodatkwa tabele, rozbic na dwie 1-n 1-n i w tedy jest wsyztko git. taka dodatkowa tabela pokazuej zależńości między konkrentymi krotkami z tabeli głównej. 
+x >= all (select x from)
+x >= (select max(x)) - max pomija nulle, i tu sie wkona z pominieciem nulli, w piersyzm przyadku, jesli byłby null, to będzie pusto, bo sql nie wie co jest wiesze x czy  null, pod kotrym moze byc dowolna wartosc.
+select * from druzyny;
+select nazwa, miasto from druzyny 
+--where iddruzyny in  (select iddruzyny from punktujace where punkty > 25);
+where iddruzyny = any (select iddruzyny from punktujace where punkty > 25);
+to w tedy bedzie problem, bo nie wiadomo czy jest cyz nie, nie wiemy co sie kryje pod tym nullem.
+dosatemy pusta relacje, bo nie wiadomo. 
+dekompizycja bezstatna jest w tedy, kiedy po dekompozycji otrzymujeym wsyztkie dane,
+zlaczenie naturalne naszej dekompozycji da nam cale poczatkowe F bez zanych dodatkowychr
+zeczy oraz niczego nie będzie brakowało.
+najcześciej ablo tabelką to robumy,
+ewetualnie patrzyy na część współną rozbić, liczxymy jej domkniecie i jesli w tym domkniecy tej częsci wspolnej zawera się jedno z rozbić( w sensie, w domknięciu tranzytywnym części wspólnej sa wslyztkie atrybuty z któregoś z rozbić., to w tedy jest to bezstarta) ale łatiwej i bezpiezniej robić to za pomocą tabeli.
+ możemy sprawedzić 
+where exists - wybiera te, gdzie istneiej chociaz jedna wartość
+where not exists 
+przydatne kiedy interesuej nas tylko to czy cos instieje czy nie, naczjesciej zwracamy 1 w ttym podzapytaniu.
+
+
+select nazwa, miasto from druzyny 
+where exist (select 1 from punktuajce natura join siatkarki where p.iddruzyny = d.iddruzyny and punkty > 8 and pozycja = 'rozgrywajaca');
+
+select nazwa, miasto from druzyny d
+where not exists (select 1 from punktuajce p where p.iddruzyny = d.iddruzyny and punkty > 25);
+< > >= =< <> =
+
+element > any (select ceny from...) - jesl element jest wiekszy od ktoregokolwek z elementow 
+element > all (select ceny from...) - jest wiekszy od wszytkich
+
+element <> all (select ..) == element not in -> jesli jest rozny od wszytkichs
+element <> any (slenect...) => jest rozny od ktoregokoliwe, wystarczy ze w select będą dwa rozne elementy, to ten wruenk przejdzie.
+
+nazwa <> all (select nazwy) -> nazwa jest unikatowa, nie ma drugiej takiej w zbiorze ktory został przekazany przez select.
+exist -> joinami, bardzo czesto zastepujemy, bo tak jest latwie i prosciej najczesciej.
+labo po prsotiu joiny, albo left join where prawy.klucz = null
+element <> any - niebiezpieczne,
+element <> all -> jest unikatowy 
+
+in => = any
+not in => <> all 
+bo z praw demorgana sie zmienia negacja i symobl z dodawania na mnozenie.
+jesli ejst pozpayatnie w klauzuli form, to musi miec aliast nadany, tak aby sql sie nie gubil 
+i abysmy mieli dostep do pol ktore w tym są.
+select ... from (select ....) p;
+x >= all (select x from....) - tutaj, zwarca wsztki x, a porównanie z nullem zwarca null, bo nie wiadomo czy x jest rowny tego co sie kryje pod nullem albo czy to co jest w nullu jest mniesjze od x
+x >= (select max(x)) -> max pomija wartosci nulli, gdyby się pojawiło, to nie zwraca tego, 
+zachowuje zależności funckjyne - muimy policzyć rzuty dekompozycji,
+a potem liczymy zależności funckjyne używając tylkko tego co mamy w rzucie.
+i teraz jeśliz dopełnienia sumy tych zbiorów zależności funckynych (sumy zależności które utrzymaliśmy w rzutach)
+funkcune wynila całe F to onaza, że dekompozyca zachowuje zależności funkcjyne.
+za pomocą having - już odnosi się d zgrupownych wyników, możemy np ś©ednia punktóœ ( juz w grupie jedej) albo suma punktów w tej kkonrketnej grupie.
+dla każdej grupy to co tu damy w having jest liczone oddzielnie.
+najpeirw jest duży zbiór ciasto, potemw wyberamy te elementy kto©e spełńiają where, następnie grupoujemy je , łączymy w grupy, i następnie analiziujeym każdą grupę z osoba pod
+kątem tego czy spełnia to co daliśmy sobie w having. jeśli dana grupa spełnia, to ją bierzemy, jeśli nie spełnia, to odrzucamy i tyle.
+zgodność referencyjna - co ma się dzać gdy coś się dzieje z kluczem obcym np
+
+create table nazwa_tabeli(
+indeks serrial primary key,
+iddruzny integer not null
+);
+
+alter table nazwa_tabeli add constraint nazwa_tabeli_iddruzyny_fk 
+	foreign key(idduzyny) references druzyny(iddruzyny) on update cascade on delete
+
+on update on delete
+
+cascade - robi to co sie dzieje z kuczem do ktego sie odnosimy.
+no action - nic nie robi
+set null - ustawia nula
+set default - usawia wiartsoc domolsnia
+restrict - nie pozwala zmienic jesli sa odniesienia
+-- obliczenie sumy punktow dla kazdej druzyny w kazdym meczu.
+-- jeden rekord to jeden mecz i konkretna druzyna
+-- nastepnie grupujemy te wyniki po nazwie druzyny, więc w kazdej grupie mamy w kazdym rekordzie
+-- ilosc punktow jaka zdobyla druzyna w danym meczu. rekordow jest tyle ile rozgrywek rozegrala dana druzyna.
+-- nastepnie w kazdej z grup (czyli dla każdej druzyny) średnią, czyli sumujemy wszytkie punkty i dzielimy
+-- przez ilosc rekordow, bo tyle bylo mezcy
+
+-- dostajemy srednia ilosc punktow zdobytych przez kazda z druzyn na jeden mecz.
+with x as (
+    select idmeczu, iddruzyny, sum(punkty) as pkt
+    from punktujace
+    group by idmeczu, iddruzyny)
+
+select nazwa, avg(pkt)::numeric(7,2) srednia
+from x natural join druzyny
+group by nazwa
+order by srednia desc;
+with x as (select idmeczu, iddruzyny sum(punkty) as pkt from punktujace group by idmeczu, iddruzyny)
+
+select nazwa, avg(pkt) from druzyny natural join x
+group by nazwa;
+dzielimy, czyli otrzyjmujemy tylko te rekordy ktore spełńiają wszytkie wartości z wymieionyhc.
+
+napierw tworzyym idealny swiat - iloczyn karteznajski, a nastpenie idejmujemy stan rzeczywisty - jesli ktos umie i jeden i drugi, no to bedzie usuniety z tego.
+i w tedy jesi id tej osoby nie znajduej sie w "brakujących" to oznacza że spełnia wszytkkie nasze wymagania.
+lepsze od zwykłęgo
+
+' '
+'.'
+'[abc]
+'[a-c]'
+'\*'
+{
+x
+^ negacja w
+'[^a-z]'
+zakres 
+'[a-z]'
+
+* - 0 lub wiecej
++ - 1 lub wiecej
+? - 0 lub 1
+.{10}
+.{5,}
+a{5, 10};
+do max 255
+'^poczatek koniec$'
+ .{10}
+ 
+.* - dowolna ilosc arzy
+.? - 0 lub 1
+.+ - 1 lub wiecej
+[a-z] od a do z
+[a-z]{10}
+(01)
+-- ==================================================
+-- zmiana typu kolumny uzywajac using(...)
+-- ==================================================
+
+-- select * from klienci;
+
+CREATE TEMPORARY TABLE klienci_tmp AS
+SELECT * FROM klienci;
+
+--select * from klienci_tmp;
+
+--select length(nazwa) from klienci_tmp;
+
+alter table klienci_tmp add column dlugosc_nazwy integer;
+
+update klienci_tmp set dlugosc_nazwy = length(nazwa);
+
+-- select * from klienci_tmp;
+
+-- alter table klienci_tmp alter column nazwa type integer; -- wywali, bo nie moze autoamtycznie
+
+select * from klienci_tmp;
+
+-- mowimy w jaki sposob ma zamienic, uzywa tego co jest w using. to co jest w
+-- using ma zwracac typ ktory jest zgodny z nowym typem tutaj zapewnie można też
+-- wrzucić funkcję jakąś.
+
+alter table klienci_tmp alter column nazwa
+type integer using(length(nazwa));
+
+select * from klienci_tmp;
+alter table nazwa_tabeli add column nazwa_kolumny numeric(7,2) not null;
+alter table nazwa_tabeli drop column nazwa_kolumny cascade;
+alter table nazwa_tabeli add column nazwa_kolumny numierc(7,2) primary key;
+
+alter table nazwa_tabeli rename column stara_nazwa to nowa_nazwa_kolumny;
+later table nazwa_tabeli rename to nowa_nazwa_tabeli;
+
+alter table add constraint tabela_iddruzyny_fk foreign key(iddruzyny) references druzyny(iddruzyny) on update cascaade;
+
+alter table nazwa_tabeli alter column nazwa_kolumny set not null;
+alter table nazwa_tabeli drop constraint nazwa_ograniczenia cascade;
+alter table nazwa_tabeli alter column nazwa_kolumny drop not null;
+
+alter table nazwa_tabeli alter column nazwa_kolkumny set default 2;
+alter table nazwa_tabeli alter column nazwa_kolumny drop default;
+
+alter table nazwa_tabeli alter colkumn nazwa_kolunny type numeric(10, 2); -- uda się tylkko w tedy kiedy kadza wartosc mozna przekonwertowac do nowego typu, mozna uzyc klauzuli using() aby okreslic w jaki sposob ma przebiegac konewrsja
+
+drop table nazwa_tabeli;
+drop table if exists nazwa_tabeli cascade, restrict, 
+with x as (update kompozycje set cena = cena * 1.1 returning *)
+
+select * from x;
+
+używając klauzuli returning możemy zwracać wartości któ©e są edytoane, usuwane, dodanaw
+szuka wszedzie,
+
+(ar) - konrektny znak
+.
+[a-c]
+\* - szuka * 
+[^a-z] - bez a b c d e.... 
+[a-z]
+
+* - 0 lub wiecej
++ - 1 lub wiece
+? - 0 lub 1 
+.{10} - 10 dowolnego znaku
+[0-9]{10} - 10 liczb
+.{10,} - conajmniej 10
+.{5, 10} od 5 do 10  włącznie aaaaaaaaaa = 10 a, też się zaliczy, 11*a już nie wejdzie
+te lizby tylko z przedziało 0 do 255 ( bo 8 bitów 256 mozliwosci, wiadomka)o co cho
+^ - poczatek znaku 
+$ - koniec znaku
+'^al.*k$'
+~ ~* !~ !~*
+funkcje sterujac,e 
+proceduralny, definowaenie fucmki i wyzwalaczy, 
+rozszeża o sterująceg, 
+zgrupowanie ciągu instrukcji w ramach funckji która jest przechowwana na serverze,
+zmniejsza ilość potzrenbych danych do przeszucania przez sieć, daje większe bezpieczeństwo i sprawdzenie ze wsztko działa tak jak powinno dizałać.
+funckjemogą przyjmiwać i zwracać wartosic typuw sklarnych jaki tablicowe
+skalarne, krotkowie, relacyjne. polimoriczne - any, zbiory rekdorów itp itd, jesli jest
+any type i any array, to musza być powiązane, any array musi byc złoózony z anytype. mozemymmiec wieel zmiennych o anytype,
+ale w wywolaniu wsyztkie te wartosci musza mieć taki asm typ
+np wsytkie to inty, innym razemw szytkie to varchary itp itd. musi byc zgodnośc
 
