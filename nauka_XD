@@ -1302,8 +1302,97 @@ alter table nazwa_tabeli alter column nazwa_kolumny type integer using(length(na
 
 drop table if exists nazwa_tabeli cascade
 restrict
+Napisz bezargumentową funkcję podwyzka, która dokonuje podwyżki kosztów produkcji czekoladek o:
 
+3 gr dla czekoladek, których koszt produkcji jest mniejszy od 20 gr;
+4 gr dla czekoladek, których koszt produkcji jest z przedziału 20-29 gr;
+5 gr dla pozostałych.
 
+Funkcja powinna ponadto podnieść cenę pudełek o tyle o ile zmienił się koszt produkcji zawartych w nich czekoladek.
 
+Przed testowaniem działania funkcji wykonaj zapytania, które umieszczą w plikach dane na temat
+kosztów czekoladek i cen pudełek tak, aby można było później sprawdzić poprawność działania funkcji podwyzka.
+Przetestuj działanie funkcji.
+
+create temporary table czekoladki_temp as
+select * from czekoladki;
+
+create temporary table pudelka_temp as
+select * from pudelka;
+
+create or replace function podwyzka() returns void as
+$$
+declare
+    c record;
+    p record;
+    zmiana numeric(7,2);
+begin
+    for c in select * from czekoladki_temp
+    loop
+        zmiana = case
+                when c.koszt < 0.20 then 0.03
+                when c.koszt >= 0.20 and c.koszt <= 0.29 then 0.04
+                else 0.05
+            end case;
+
+        update czekoladki_temp set koszt = koszt + zmiana where idczekoladki = c.idczekoladki;
+
+        for p in select * from pudelka_temp natural join zawartosc where idczekoladki = c.idczekoladki
+        loop
+            update pudelka_temp set cena = cena + p.sztuk*zmiana where idpudelka = p.idpudelka;
+        end loop;
+    end loop;
+end;
+$$ language plpgsql;
+
+select * from czekoladki_temp;
+select * from pudelka_temp order by idpudelka;
+select podwyzka();
+select * from czekoladki_temp;
+select * from pudelka_temp order by idpudelka;
+
+Napisz funkcję zwracającą informacje o zamówieniach złożonych przez klienta,
+którego identyfikator podawany jest jako argument wywołania funkcji.
+W/w informacje muszą zawierać: idzamowienia, idpudelka, datarealizacji.
+Przetestuj działanie funkcji. Uwaga: Funkcja zwraca więcej niż 1 wiersz!
+
+create function szczegoly(idklienta_ integer) returns table(r_idzamowienia integer, r_idpudelka char(4), r_datarealizacji date) as
+$$
+declare
+
+begin
+    return query select idzamowienia, idpudelka, datarealizacji from zamowienia natural join artykuly where idklienta = idklienta_;
+end;
+$$ language plpgsql;
+
+select * from szczegoly(7);
+select nazwisko, wiek pobory*12 from pracownicy order by pobory desc, nazwisko;
+
+select nazwisko, imie, data_urodzenia, stanowsiko, dzial, pobory where stanowsiko in ('robotnik', 'analityk') and pobory > 2000;
+
+select nazwisko, imie from pracownicy where 
+pobory > (select pobory from pracownicy where imie = 'Adam' and nazwisko = 'Kowalik');
+
+update pracnowcy set pobory = pobory * 1.1 where stanowsiko = 'robotnik';
+
+select stanowsiko avg(pobory) count(idpracownika) from pracownicy where stanowsiko <> 'kierownik' group by stanowsiko order by avg(pobory);
+typy złożone to typ danych zlozoyn z innych typow danych
+
+craete type complex as (
+re real,
+im real
+);
+
+create table liczba(
+nazwa varchar(100),
+wartosc complex
+);
+
+insert into liczba values('i', (0,1)), ('1', (1,0));
+
+select nazwa (wartosc).re from liczba;
+
+select nazwa from liczba wherer (wartosc).im = 0;
+wewnętrzne nie mogą mieć ogranicze
 
 
