@@ -1173,7 +1173,135 @@ $$ language plpgsql;
 select nazwa_funkcji(7);
 
 drop function nazwa_funkcji(integer);
+Wszystkie czekoladki z kremem, ktorych koszt jest wyzszy od
+kosztu dowolnej czekoladki z truskawkami wystepujacej w pudelku 'alls':
 
+
+select * from czekoladki;
+
+select * from czekoladki where nadzienie = 'krem' and
+koszt > any (select koszt from czekoladki natural join zawartosc where idpudelka = 'alls' and nadzienie = 'truskawki');
+
+select * from klienci k where not exists (select 1 from zamowienia z where z.idklienta = k.idklienta );
+
+
+select * from czekoladki where nadzienie = 'krem' and
+koszt > all (select koszt from czekoladki natural join zawartosc where nadzienie = 'truskawki' and idpudelka = 'alls');
+
+Napisz funkcję masaPudelka wyznaczającą masę pudełka jako
+sumę masy czekoladek w nim zawartych.
+Funkcja jako argument przyjmuje identyfikator pudełka.
+Przetestuj działanie funkcji na podstawie prostej instrukcji select.
+
+select * from pudelka;
+create or replace function masaPudelka(idpudelka_ char(4), out suma_masy numeric(7,2)) as
+$$
+declare
+
+begin
+    select sum(sztuk*masa) into suma_masy from zawartosc natural join czekoladki where idpudelka = idpudelka_;
+
+end;
+$$ language plpgsql;
+
+SELECT masaPudelka('alls');
+rekurencyjne, w tedy określamy kto kim jest i krotnościtylko dla tych zazanzaonych
+rekunrecjyne sam ze sobą, rozbijamy na tabele, chyba ze jest obowiazkowy to se dostawiamy kolumne jedna
+
+alter table nazwa_tabeli add column szef integer not null references pracownicy(idpracownika) on update cascade;
+create function nazwa_funkci() returns table(r_cena numeric(7,2), r_nazwa varchar(100)) as 
+$$
+declare
+
+begin
+	return query select * ....;
+end;
+$$ language plpgsql;
+BCNF - po lewej jest zawsze klucz ablo nadkluc 
+3NF - po lewej jest klucz / nadklucz lub po prawej są kkuczowe
+2NF - nie ma zależości częściowych. nie ma sytuaji, ablo atrybut niekluczowy zależał od części klucza.
+1NF - wszytkie wartosći są watoścami atomicznymi. nie da się ich podzileilić
+Napisz funkcję zysk obliczającą zysk jaki cukiernia uzyskuje ze sprzedaży
+jednego pudełka czekoladek, zakładając, że zysk ten jest różnicą między ceną pudełka,
+a kosztem wytworzenia zawartych w nim czekoladek i kosztem opakowania (0,90 zł dla każdego pudełka).
+Funkcja jako argumentprzyjmuje identyfikator pudełka. Przetestuj działanie funkcji na
+podstawie prostej instrukcji select.
+
+drop function zysk(char(4));
+
+create or replace function zysk(idpudelka_ char(4), out nasz_zysk numeric(7,2)) as
+$$
+declare
+    nasz_koszt numeric(7,2);
+begin
+    select sum(koszt*sztuk) into nasz_koszt from zawartosc natural join czekoladki where idpudelka = idpudelka_;
+    nasz_koszt = nasz_koszt + 0.9; -- koszt opakowania
+    select cena-nasz_koszt into nasz_zysk from pudelka where idpudelka = idpudelka_;
+
+end;
+$$ language plpgsql;
+
+select zysk('alls');
+create sequence seq1;
+
+create table nazwa_tabeli(
+id integer primary key default nextval('seq1');
+
+
+create table nazwa_tabeli(
+id serial primary key, -- tworzy sekwence nazwa_tabeli_id_seq i autoamtcznie ustawia default nextval('nazwa_tabeli_id_seq')
+nazwa varchar(100)
+);
+Napisz funkcję rabat obliczającą rabat jaki otrzymuje klient składający zamówienie.
+Funkcja jako argument przyjmuje identyfikator klienta.
+Rabat wyliczany jest na podstawie wcześniej złożonych zamówień w sposób następujący:
+
+4 % jeśli wartość zamówień jest z przedziału 101-200 zł;
+7 % jeśli wartość zamówień jest z przedziału 201-400 zł;
+8 % jeśli wartość zamówień jest większa od 400 zł.
+
+-- zwracamy rabat w postaci ile zl odliczymy, np 1000 zl -> wynikiem bedzie 80 zl
+create or replace function rabat(idklienta_ integer) returns numeric(7,2) as
+$$
+declare
+    suma_zamowien numeric(7,2);
+begin
+    suma_zamowien = sumaZamowien(idklienta_);
+    return suma_zamowien * case 
+        when suma_zamowien between 101 and 200 then 0.04
+        when suma_zamowien between 201 and 400 then 0.07
+        when suma_zamowien > 400 then 0.08
+        else 0.0
+        end case;
+
+end;
+$$ language plpgsql;
+
+select sumaZamowien(7);
+select rabat(7);
+
+nazwa i miasto z drużyny, dla tych których zawoniczki (z punktujace) zdybyly powyzej 25 pkt
+
+select nazwa, miasto from druzyny d where exists
+    (select 1 from punktujace p where p.iddruzyny = d.iddruzyny and punkty > 25);
+alter table nazwa_tabeli add column cena numeric(7,2) constraint cena_minimalna check(cena > 40.00);
+alter table nazwa_tabeli drop column nazwa_kolkumny cascade;
+
+alter table nazwa_tabeli rename column stara_nazwa to nowa_nazwa;
+alter table nazwa_tabeli rename to nowa_nazwa_tabeli;
+
+alter table nazwa_tabeli add constraint premia_max check(premia < pensja);
+alter table nazwa_tabeli add constraint tabela_idklienta_fk foreign key(idklienta) references klienci; (idklienta)
+alter table nazwa_tabeli alter column nazwa_kolumny set not null;
+alter table nazwa_tabeli alter column nazwa_kolumny drop not null;
+alter table nazwa_tabeli drop constraint nazwa_ograniczenia cascade;
+alter table nazwa_tabeli alter column nazwa_kolumny set default 5;
+alter table nazwa_tabeli alter column nazwa_kolumny drop default;
+
+alter table nazwa_tabeli alter column nazwa_kolumny type integer using(length(nazwa));
+
+drop table if exists nazwa_tabeli cascade
+restrict
 
 
 
