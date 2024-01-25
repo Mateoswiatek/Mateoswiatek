@@ -6,6 +6,7 @@ I'm open to new challenges and continuously strive to improve my skills. I'm eag
 🌱 I’m currently learning **Java, SQL, Python, C**
 <br>
 🔭 I’m currently working on:
+- [Zombie Game](https://github.com/Mateoswiatek/JavaZombieGame) - A game written in Java using many design patterns.
 - [OpenPortScanner](https://github.com/Mateoswiatek/JavaOpenPortScannerWithThreads) - I used ExecutorService and BlockingQueue to manage the task.
 - [Lunaris](https://www.orbital-space.com/lunarmission) - Embedded programming, development
 <br>
