@@ -3,33 +3,25 @@
 I am a second-year student at **AGH** in Krakow, Poland, majoring in Computer Science and Intelligent Systems (**ISI**)
 I'm open to new challenges and continuously strive to improve my skills. I'm eager to try new things, and I view every challenge as an opportunity for growth.
 <br><br>
-🌱 I’m currently learning **Java, SQL, Python, C**
+🌱 I’m currently learning **Java, SQL, SpringBoot**
 <br>
 🔭 I’m currently working on:
 - [Zombie Game](https://github.com/Mateoswiatek/JavaZombieGame) - A game written in Java using many design patterns.
-- [OpenPortScanner](https://github.com/Mateoswiatek/JavaOpenPortScannerWithThreads) - I used ExecutorService and BlockingQueue to manage the task.
-- [Lunaris](https://www.orbital-space.com/lunarmission) - Embedded programming, development
+- [SQL_Querries](https://github.com/Mateoswiatek/SQL_Querries) - My SQL querries from Colloquia / labs
 <br>
 
 Last more interesting update:
 - [ParallelMean](https://github.com/Mateoswiatek/JavaParallelMeanLab12) - Different approaches to managing multithreading.
-- [AdminUnit tool with CSV Reader](https://github.com/Mateoswiatek/AdminUnit_tool_with_CSV_Reader-)
 - [Dining Philosophers](https://github.com/Mateoswiatek/JavaDiningPhilosophers) - Simple solution to the Dining Philosophers problem
 
 Realised "Interesting" projects:
-- [SQL_Querries](https://github.com/Mateoswiatek/SQL_Querries) - My SQL querries from Colloquia / labs
-- [Simple CV HTML generator in Java](https://github.com/Mateoswiatek/CreatorCVJava)
+- [AdminUnit tool with CSV Reader](https://github.com/Mateoswiatek/AdminUnit_tool_with_CSV_Reader-)
 - [Safe Drive](https://www.youtube.com/watch?v=f3RRo53PAh8) - Designed and programmed device, Winning the Olympics in Poland.
 - [Turtle_killer](https://github.com/Mateoswiatek/ROS2_follow_turtle_robot) - The most *complex completed* project in *ROS2*.
-- [Gym Website as a Course Assignment Project](https://github.com/MaksymSz/silownia) - I am responsible for the Java backend
+- [Lunaris](https://www.orbital-space.com/lunarmission) - Embedded programming, development
 
 
-<h2 align="left">You can reach me at: </h2>
-<a href="https://www.linkedin.com/in/mateoswiatek/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="Mateusz Świątek LinkedIn Profile" height="30" width="40" /></a>
-<a href="https://www.hackerrank.com/mateoswiatek/"  target="blank"><img align="center" src="https://cdn.iconscout.com/icon/free/png-512/free-hackerrank-3628823-3030100.png?f=avif&w=256" alt="Mateusz Świątek Hackerrank Profile" height="30" width="30"></a>
-<a href="https://gitlab.com/Mateoswiatek" target="blank"> <img align="center" src="https://www.vectorlogo.zone/logos/gitlab/gitlab-icon.svg" alt="Mateusz Świątek GitLab Profile" height="30" width="30"></a>
-</p>
-<a href="https://leetcode.com/mswiatek2002/ target="blank"> LetCode Profile</a>
+<br><br>
 
 <div align="center">
   <table>
