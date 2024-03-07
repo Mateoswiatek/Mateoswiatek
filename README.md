@@ -1,9 +1,9 @@
 # Hello there
 I am a second-year student at **AGH** in Krakow, Poland, majoring in Computer Science and Intelligent Systems (**ISI**)
 I'm open to new challenges and continuously strive to improve my skills. I'm eager to try new things, and I view every challenge as an opportunity for growth.
-[My CV](https://github.com/Mateoswiatek/Mateoswiatek/blob/main/CV_Mateusz_Swiatek.pdf)<br>
+My [CV](https://github.com/Mateoswiatek/Mateoswiatek/blob/main/CV_Mateusz_Swiatek.pdf)<br>
 <br><br>
-🌱 I’m currently learning **Java, SQL, SpringBoot**
+🌱 I’m currently learning **Java, SQL**
 <br>
 🔭 I’m currently working on:
 - [Zombie Game](https://github.com/Mateoswiatek/JavaZombieGame) - A game written in Java using many design patterns.
@@ -12,13 +12,13 @@ I'm open to new challenges and continuously strive to improve my skills. I'm eag
 
 Last more interesting update:
 - [ParallelMean](https://github.com/Mateoswiatek/JavaParallelMeanLab12) - Different approaches to managing multithreading.
-- [Dining Philosophers](https://github.com/Mateoswiatek/JavaDiningPhilosophers) - Simple solution to the Dining Philosophers problem
 
 Realised "Interesting" projects:
-- [AdminUnit tool with CSV Reader](https://github.com/Mateoswiatek/AdminUnit_tool_with_CSV_Reader-)
 - [Safe Drive](https://www.youtube.com/watch?v=f3RRo53PAh8) - Designed and programmed device, Winning the Olympics in Poland.
+- [AdminUnit tool with CSV Reader](https://github.com/Mateoswiatek/AdminUnit_tool_with_CSV_Reader-)
 - [Turtle_killer](https://github.com/Mateoswiatek/ROS2_follow_turtle_robot) - The most *complex completed* project in *ROS2*.
 - [Lunaris](https://www.orbital-space.com/lunarmission) - Embedded programming, development
+- [Dining Philosophers](https://github.com/Mateoswiatek/JavaDiningPhilosophers) - Simple solution to the Dining Philosophers problem
 
 
 <br><br>
