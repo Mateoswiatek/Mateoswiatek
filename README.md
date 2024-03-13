@@ -5,12 +5,14 @@ My [CV](https://github.com/Mateoswiatek/Mateoswiatek/blob/main/CV_Mateusz_Swiate
 <br><br>
 🌱 I’m currently learning **Java, SQL**
 <br>
+
 🔭 I’m currently working on:
-- [Zombie Game](https://github.com/Mateoswiatek/JavaZombieGame) - A game written in Java using many design patterns.
+- [Backend for Gym](https://github.com/Mateoswiatek/GymBackend) - Small SpringBoot project.
 - [SQL_Querries](https://github.com/Mateoswiatek/SQL_Querries) - My SQL querries from Colloquia / labs
 <br>
 
 Last more interesting update:
+- [Zombie Game](https://github.com/Mateoswiatek/JavaZombieGame) - A game written in Java using many design patterns.
 - [ParallelMean](https://github.com/Mateoswiatek/JavaParallelMeanLab12) - Different approaches to managing multithreading.
 
 Realised "Interesting" projects:
