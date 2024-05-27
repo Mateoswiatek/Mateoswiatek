@@ -7,13 +7,15 @@ My [CV](https://github.com/Mateoswiatek/Mateoswiatek/blob/main/CV_Mateusz_Swiate
 <br>
 
 🔭 I’m currently working on:
+- ["JPA Query Methods" generator](https://github.com/Mateoswiatek/SqlFromMethodNames/tree/master)
+- Discount microservice
 - [Backend for Gym](https://github.com/Mateoswiatek/GymBackend) - Small SpringBoot project.
 - [SQL_Querries](https://github.com/Mateoswiatek/SQL_Querries) - My SQL querries from Colloquia / labs
 <br>
 
 Last more interesting update:
+- ["JPA Query Methods" generator](https://github.com/Mateoswiatek/SqlFromMethodNames/tree/master)
 - [Zombie Game](https://github.com/Mateoswiatek/JavaZombieGame) - A game written in Java using many design patterns.
-- [ParallelMean](https://github.com/Mateoswiatek/JavaParallelMeanLab12) - Different approaches to managing multithreading.
 
 Realised "Interesting" projects:
 - [Safe Drive](https://www.youtube.com/watch?v=f3RRo53PAh8) - Designed and programmed device, Winning the Olympics in Poland.
