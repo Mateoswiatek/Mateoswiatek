@@ -7,6 +7,7 @@ My [CV](https://github.com/Mateoswiatek/Mateoswiatek/blob/main/CV_Mateusz_Swiate
 <br>
 
 🔭 I’m currently working on:
+- [Application for managing windmills](https://github.com/Mateoswiatek/WindmillsManagment) - C#
 - ["JPA Query Methods" generator](https://github.com/Mateoswiatek/SqlFromMethodNames/tree/master)
 - Discount microservice
 - [Backend for Gym](https://github.com/Mateoswiatek/GymBackend) - Small SpringBoot project.
@@ -38,7 +39,7 @@ Realised "Interesting" projects:
      <td align="center" width=110>Java</td>
      <td align="center" width=110>SQL</td>
      <td align="center" width=110>Python</td>
-     <td align="center" width=110>C++ / C</td>
+     <td align="center" width=110>C# / C++ / C</td>
      <td align="center" width=110>ROS2</td>
      <td align="center" width=110>Linux</td>
     </tr>
