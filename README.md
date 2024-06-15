@@ -3,7 +3,7 @@ I am a second-year student at **AGH** in Krakow, Poland, majoring in Computer Sc
 I'm open to new challenges and continuously strive to improve my skills. I'm eager to try new things, and I view every challenge as an opportunity for growth.
 My [CV](https://github.com/Mateoswiatek/Mateoswiatek/blob/main/CV_Mateusz_Swiatek.pdf)<br>
 <br><br>
-🌱 I’m currently learning **Java, SpringBoot, SQL**
+🌱 I’m currently learning **Java, SpringBoot, SQL, C#, NN, NeuroEvolution, Genetic Programming, ROS2**
 <br>
 
 🔭 I’m currently working on:
