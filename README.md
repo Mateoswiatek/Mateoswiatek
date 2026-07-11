@@ -33,9 +33,9 @@ My [Linkedin](https://www.linkedin.com/in/mateoswiatek/)
 
 ### Skills
 
-**Backend:** Java · Spring Boot · Hibernate · jOOQ · RabbitMQ
-**Data:** SQL / PostgreSQL · Elastic
-**Architecture:** DDD · Microservices · SOLID · Modularization
-**DevOps / Infra:** Docker · Kubernetes · Argo · GitHub Actions · CI/CD · Linux
-**Also:** Python · C# / C++ · React / TypeScript · ROS2
-**Hardware:** Mechatronics · Electronics · PLC Programming
+- **Backend:** Java · Spring Boot · Hibernate · jOOQ · RabbitMQ
+- **Data:** SQL / PostgreSQL · Elastic
+- **Architecture:** DDD · Microservices · SOLID · Modularization
+- **DevOps / Infra:** Docker · Kubernetes · Argo · GitHub Actions · CI/CD · Linux
+- **Also:** Python · C# / C++ · React / TypeScript · ROS2
+- **Hardware:** Mechatronics · Electronics · PLC Programming
